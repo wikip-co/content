@@ -1,0 +1,36 @@
+name: Trigger Site Rebuilds
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  trigger-rebuilds:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger wikip.co rebuild
+        run: |
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.TRIGGER_TOKEN }}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/wikip-co/wikip.co/dispatches \
+            -d '{"event_type":"content-updated","client_payload":{}}'
+
+      - name: Trigger anthonyrussano.com rebuild
+        run: |
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.TRIGGER_TOKEN }}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/anthonyrussano/anthonyrussano.com/dispatches \
+            -d '{"event_type":"content-updated","client_payload":{}}'
