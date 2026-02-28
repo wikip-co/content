@@ -31,11 +31,21 @@ Butyrate (butyric-acid) is produced in the colon through microbial fermentation 
 
 ### Chronic Obstructive Pulmonary Disease: (COPD)
 
-Dietary fiber found to protect against COPD.[^1]
+Dietary fiber found to protect against COPD.[^1] [^2]
 
 [^1]: **Study Type:**  Press Release<br>**Title:** Australian research uncovers link between dietary fiber and lung disease: Dietary fiber found to protect against COPD<br>**Author(s):** Marea Martlew<br>**Institution(s):** UNIVERSITY OF TECHNOLOGY SYDNEY<br>**Publication:** <i>EurekAlert!</i><br>**Date:** 4-APR-2019<br>**Link:** [Source](https://www.eurekalert.org/pub_releases/2019-04/uots-aru040419.php)<br>**Citations:**   
 
-<!-- [^2]: 
+[^2]: 
+**Title:** [ ]( )<br>
+**Publication:** [ ]( )<br>
+**Date:** <br>
+**Study Type:** Animal Study, Commentary, Human Study: In Vitro - In Vivo - In Silico, Human: Case Report, Meta Analysis, Review<br>
+**Author(s):** <br>
+**Institution(s):** <br>
+**Abstract:** <br>
+**Copy:** [archive](https://ipfs.io/ipfs/), [archive-mirror](https://cloudflare-ipfs.com/ipfs/)
+
+<!-- [^3]: 
 **Title:** [ ]( )<br>
 **Publication:** [ ]( )<br>
 **Date:** <br>
