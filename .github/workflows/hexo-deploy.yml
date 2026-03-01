@@ -1,0 +1,154 @@
+name: Hexo Build and Deploy
+
+on:
+  workflow_call:
+    inputs:
+      site_name:
+        type: string
+        required: true
+      branch:
+        type: string
+        required: true
+      enable_docker:
+        type: boolean
+        default: false
+      enable_encryption:
+        type: boolean
+        default: false
+    secrets:
+      GIT_TOKEN:
+        required: true
+      EMAIL_USERNAME:
+        required: true
+      EMAIL_PASSWORD:
+        required: true
+      EMAIL_SMTP_SERVER:
+        required: true
+      EMAIL_SMTP_PORT:
+        required: true
+      BLOG_ENCRYPT_PASSWORD:
+        required: false
+      DOCKER_USERNAME:
+        required: false
+      DOCKER_PASSWORD:
+        required: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GIT_TOKEN }}
+        submodules: 'recursive'
+
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 'latest'
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Inject encryption passwords
+      if: inputs.enable_encryption
+      run: |
+        cd site/source/_posts
+        find . -type f -name "*.md" -exec sh -c '
+          if grep -q "^encrypted: true" "$1"; then
+            sed -i "/^encrypted:/a password: ${{ secrets.BLOG_ENCRYPT_PASSWORD }}" "$1"
+          fi
+        ' sh {} \;
+
+    - name: Build site
+      env:
+        NODE_OPTIONS: --max-old-space-size=5168
+      run: |
+        git config --global user.email "me@anthonyrussano.com"
+        git config --global user.name "Anthony Russano"
+        git submodule update --init --remote
+        cd public
+        git switch main
+        git pull
+        rm -rf *
+        cd ..
+        cd site
+        npm install
+        node_modules/hexo/bin/hexo gen -c 1
+        cd source/_posts
+        git switch main
+        git pull
+        cd ../../..
+        cd public
+        git add .
+        git commit -m "workflow publish"
+        git push
+        cd ..
+        git pull --rebase
+        git add .
+        git commit -m "workflow deploy"
+        git push
+
+    - name: Prepare Docker Image
+      if: inputs.enable_docker
+      id: prep
+      run: |
+        DOCKER_IMAGE=${{ secrets.DOCKER_USERNAME }}/${GITHUB_REPOSITORY#*/}
+        TAGS="$TAGS,${DOCKER_IMAGE}:latest"
+        echo ::set-output name=tags::${TAGS}
+        echo ::set-output name=docker_image::${DOCKER_IMAGE}
+
+    - name: Set up QEMU
+      if: inputs.enable_docker
+      uses: docker/setup-qemu-action@master
+      with:
+        platforms: all
+
+    - name: Set up Docker Buildx
+      if: inputs.enable_docker
+      id: buildx
+      uses: docker/setup-buildx-action@master
+
+    - name: Login to DockerHub
+      if: inputs.enable_docker
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build Docker Image
+      if: inputs.enable_docker
+      id: docker-build
+      uses: docker/build-push-action@v2
+      with:
+        builder: ${{ steps.buildx.outputs.name }}
+        context: .
+        file: ./Dockerfile
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: ${{ steps.prep.outputs.tags }}
+
+    - name: Send email notification
+      if: always()
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: ${{ secrets.EMAIL_SMTP_SERVER }}
+        server_port: ${{ secrets.EMAIL_SMTP_PORT }}
+        username: ${{ secrets.EMAIL_USERNAME }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        subject: '${{ inputs.site_name }} deployment ${{ job.status }}'
+        to: me@anthonyrussano.com
+        from: ${{ secrets.EMAIL_USERNAME }}
+        html_body: |
+          <!DOCTYPE html>
+          <html>
+          <body>
+          <h2>${{ inputs.site_name }} Build Report</h2>
+          <p><strong>Status:</strong> ${{ job.status }}</p>
+          <p><strong>Triggered by:</strong> ${{ github.event_name }}</p>
+          <p><strong>Branch:</strong> ${{ github.ref_name }}</p>
+          <p><strong>Commit:</strong> <code>${{ github.sha }}</code></p>
+          <p><a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}">View workflow run</a></p>
+          </body>
+          </html>
