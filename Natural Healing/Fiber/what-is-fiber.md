@@ -11,7 +11,7 @@ tags:
 - Microbiome Modulation
 - Immunomodulator
 ---
-**Dietary Fiber** are substances of [plant] origin present in foods that are not metabolized in the large digestive tract and increase volume of the intestinal content. Chemically, dietary fiber means carbohydrate polymers with a degree of polymerization not lower than 3, which are neither digested nor absorbed in the small intestine. Examples include fruit, barley, oats, lignin, cellulose, pectin, etc. Generous intake of these fibers by diet is associated with a low risk of cardiovascular disease, hypertension, diabetes, obesity, colon cancer and gastrointestinal disorders."[^1]
+**Dietary Fiber** are substances of plant origin present in foods that are not metabolized in the large digestive tract and increase volume of the intestinal content. Chemically, dietary fiber means carbohydrate polymers with a degree of polymerization not lower than 3, which are neither digested nor absorbed in the small intestine. Examples include fruit, barley, oats, lignin, cellulose, pectin, etc. Generous intake of these fibers by diet is associated with a low risk of cardiovascular disease, hypertension, diabetes, obesity, colon cancer and gastrointestinal disorders.[^1]
 
 ## Healing Properties
 
