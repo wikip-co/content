@@ -302,7 +302,7 @@ Use `<br>` to separate fields within a single footnote (not blank lines).
 
 ### Do Not
 - Do not include personal opinions, commercial recommendations, or medical advice framing ("you should take X")
-- Do not copy-paste copyrighted text verbatim; paraphrase and cite
+- It is okay to copy-paste text verbatim at times; but also okay to paraphrase and cite
 - Do not leave broken links in `title` or `archive` fields (use empty parentheses `()` for placeholders)
 - Do not use HTML except for `<br>` in references and `<iframe>` for embedded video
 
