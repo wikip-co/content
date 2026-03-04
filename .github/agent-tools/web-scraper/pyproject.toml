@@ -1,0 +1,11 @@
+[project]
+name = "scrappyling"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "scrapling[fetchers]>=0.4.1",
+    "beautifulsoup4>=4.12.3",
+    "markitdown>=0.0.1a3",
+]

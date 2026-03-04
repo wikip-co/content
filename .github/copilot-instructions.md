@@ -312,3 +312,24 @@ Use `<br>` to separate fields within a single footnote (not blank lines).
 2. Ensure frontmatter is valid YAML and all required fields are present
 3. All factual claims should have citation footnotes
 4. Push to `main` — GitHub Actions will automatically trigger site rebuilds for both wikip.co and anthonyrussano.com
+
+## Agent Tooling
+
+When asked to review a research URL and generate importable markdown, run the local scraper tool in this repository:
+
+```bash
+cd .github/agent-tools/web-scraper
+uv run main.py "<URL>" "<output_file.md>"
+```
+
+If `uv` is unavailable, use:
+
+```bash
+cd .github/agent-tools/web-scraper
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python3 main.py "<URL>" "<output_file.md>"
+```
+
+Use the generated markdown as source material when updating the target article in this repository.
