@@ -25,6 +25,10 @@ tags:
 - Cardiovascular Health
 - Kidney Health
 - Vascular Health
+- Allergic Rhinitis
+- SIRT1
+- Mitochondrial Health
+- Immune Modulation
 ---
 **Resveratrol** is a type of natural phenol produced by several plants. 
 
@@ -105,6 +109,22 @@ The consumption of grape juice, together with physical exercise, may be able to 
 ## Disease / Symptom Treatment
 
 ### Allergies
+
+#### Allergic Rhinitis
+
+Resveratrol alleviated allergic rhinitis symptoms in an ovalbumin-induced mouse model, reducing sneezing frequency (about 60%) and nasal rubbing events (about 55%).[^15]
+
+Resveratrol reduced inflammatory cell infiltration in nasal lavage and tissue, including eosinophils, macrophages, lymphocytes, and neutrophils, and improved histologic markers such as mucosal thickening and goblet cell hyperplasia.[^15]
+
+Resveratrol improved allergic and immune markers by lowering histamine, OVA-specific IgE, and IgG1 while restoring IgG2a and anti-inflammatory TGF-beta.[^15]
+
+Resveratrol lowered key pro-inflammatory cytokines linked to allergic rhinitis pathology, including IL-4, IL-5, IL-13, TNF-alpha, IL-1beta, IFN-gamma, and IL-18.[^15]
+
+Resveratrol suppressed NF-kappaB pathway activation (p65) and lipid peroxidation marker 4-HNE in nasal mucosa while restoring the epithelial tight-junction protein ZO-1.[^15]
+
+Mechanistically, the study reported that these effects were SIRT1-dependent, because co-treatment with the SIRT1 inhibitor EX527 attenuated resveratrol's antioxidant and anti-inflammatory protection.[^15]
+
+In cell models, resveratrol reduced intracellular and mitochondrial ROS, restored mitochondrial membrane potential, activated Nrf2/HO-1 antioxidant signaling, promoted macrophage polarization from M1 to M2, and reduced epithelial oxidative DNA damage markers (8-OHdG and gamma-H2A.X).[^15]
 
 ### Birth Defects
 
@@ -211,3 +231,10 @@ The NAD+ precursors Nicotinic acid and Nicotinamide, when administered with Resv
 
 [^14]: **Title:** [Resveratrol attenuates mast cell mediated allergic reactions: potential for use as a nutraceutical in allergic diseases?](https://doi.org/10.1002/mnfr.202200170)<br>
 [Archive](resveratrol-14.pdf)
+
+[^15]: **Title:** [Resveratrol Ameliorates Allergic Rhinitis by Activating SIRT1 to Disrupt the Mitochondrial ROS-Inflammation Vicious Cycle](https://doi.org/10.1002/ffj.70074)<br>
+**Publication:** *Flavour and Fragrance Journal*<br>
+**Date:** 2026<br>
+**Study Type:** Network Pharmacology, Cell Study, Animal Study (OVA-induced allergic rhinitis mouse model)<br>
+**Author(s):** Xinyu Zhou, Yi Yue, Wenwen Qi, Wenqing Zhu, Xinran Liu, Rongcui Sui, Xuanchen Zhou<br>
+**Copy:** [Source](https://onlinelibrary.wiley.com/doi/10.1002/ffj.70074), [PDF](https://onlinelibrary.wiley.com/doi/pdf/10.1002/ffj.70074)
