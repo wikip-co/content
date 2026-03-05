@@ -9,6 +9,9 @@ tags:
 - Anti-Infectious
 - Antiviral
 - Antimicrobial
+- Antimicrobial Activity
+- Food Preservation
+- Essential Oil
 - COVID-19
 - Novel Coronavirus
 - Coronavirus
@@ -31,6 +34,15 @@ Indonesian bay leaf (Syzygium polyanthum) is rich in flavonoids, alkaloids, terp
 ## Healing Properties
 
 ### Antimicrobial
+
+#### Natural Preservative
+
+Essential oil derived from Laurus nobilis leaves is a potential bactericide against *Leuconostoc mesenteroides* MS1, a heterofermentative lactic acid bacterium responsible for spoilage of vacuum-packed Vienna sausages.[^3]
+
+- The minimum inhibitory concentration (MIC) of Laurus nobilis essential oil against *Leuconostoc mesenteroides* MS1 falls in the range of 0.64–1.87 mg/mL.[^3]
+- The minimum bactericidal concentration (MBC) falls in the range of 0.76–2.41 mg/mL, indicating potent bactericidal activity.[^3]
+- *Leuconostoc mesenteroides* MS1 showed high sensitivity to Laurus nobilis essential oil, maintaining viable cell counts at the initial inoculation level (10³ CFU g⁻¹) throughout 42 days of refrigerated storage when 0.50 mL of the oil was applied to sterile sausage samples.[^3]
+- Laurus nobilis essential oil represents an alternative to conventional chemical-synthesis food preservatives for controlling common spoilage bacteria in Vienna sausages.[^3]
 
 #### Antiviral
 
@@ -72,6 +84,9 @@ At doses of 150-300 mg/kg of Body Weight it was able to reduce blood sugar level
 **Publication:** [Council of Life Science: JOURNAL OF BIOINFORMATICS](https://colscience.org/cols-journal-of-bioinformatics/)<br>
 **Archive:** [archive](https://ipfs.io/ipfs/QmVU4D9Hrp768i5yQSQD7TcWdNatpJCTzN8zPkrj4XGMFr), [archive-mirror](https://cloudflare-ipfs.com/ipfs/QmVU4D9Hrp768i5yQSQD7TcWdNatpJCTzN8zPkrj4XGMFr)
 
-[^3]: **Title:** [ ]( )<br>
-**Publication:** [ ]( )<br>
-**Archive:** [archive](https://ipfs.io/ipfs/), [archive-mirror](https://cloudflare-ipfs.com/ipfs/)
+[^3]: **Title:** [Evaluation of essential oils from *Aloysia polystachya*, *Citrus limon*, *Eucalyptus cinerea*, and *Laurus nobilis*, and (R)-(−)-carvone as natural preservatives in Vienna sausages](https://doi.org/10.1002/ffj.70074)<br>
+**Publication:** [Flavour and Fragrance Journal](https://onlinelibrary.wiley.com/journal/10991026)<br>
+**Date:** 2025<br>
+**Study Type:** Human Study: In Vitro<br>
+**Author(s):** M. A. Serra, A. del L. Quiberoni, A. E. Andreatta<br>
+**Institutions:** Universidad Tecnológica Nacional, Facultad Regional San Francisco, San Francisco, Córdoba, Argentina; Instituto de Lactología Industrial, Universidad Nacional del Litoral — CONICET, Santa Fe, Argentina
