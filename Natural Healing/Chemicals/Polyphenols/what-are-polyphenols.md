@@ -5,6 +5,9 @@ tags:
 - Antimicrobial
 - Antiviral
 - Endurance
+- Gut Microbiota
+- Bifidobacterium
+- Prebiotic
 ---
 **Polyphenols** are a structural class of mainly natural, but also synthetic or semisynthetic, organic chemicals.  They are considered micronutrients.
 
@@ -52,6 +55,12 @@ Polyphenols have prebiotic effects; stimulate the growth of healthy gut microorg
 
 Consumption of polyphenols, especially catechins, anthocyanins and proanthocyanidins, increases the abundance of Lactobacillus, Bifidobacterium, Akkermansia, Roseburia, and Faecalibacterium spp. Moreover, polyphenols supplementation increased the production of short-chain fatty acids (SCFA), including butyrate. The clinical trials showed an increased abundance of Lactobacillus acidophilus, Bifidobacterium and Faecalibacterium spp., and a reduction in plasma lipopolysaccharide-binding protein after the consumption of anthocyanins and ellagic acid. In conclusion, there is strong evidence in preclinical studies that dietary polyphenols can stimulate both the growth of microorganisms identified as prebiotic targets and an increase in the production of SCFA.[^1]
 
+A 2026 systematic review and meta-analysis of human intervention studies found a significant increase in Bifidobacterium abundance after polyphenol-rich interventions (SMD = 0.81; 95% CI: 0.18-1.44; p = 0.0114), despite substantial between-study heterogeneity (I2 = 77.4%).[^5]
+
+The same review reported that flavonoids, phenolic acids, and anthocyanin-rich foods (including berries, grape-derived interventions, and green tea) were commonly associated with higher Bifidobacterium, Lactobacillus, and Faecalibacterium, with concurrent improvements in metabolic and inflammatory markers in multiple study populations.[^5]
+
+The authors emphasized that short intervention duration, methodological variability, and individual microbiome metabotypes likely explain part of the inconsistent response magnitude across trials.[^5]
+
 ### Endurance
 
 [^1]: **Title:** [Prebiotic effect of dietary polyphenols: A systematic review](https://doi.org/10.1016/j.jff.2020.104169)<br>
@@ -76,3 +85,10 @@ Consumption of polyphenols, especially catechins, anthocyanins and proanthocyani
 **Publication:** [ ]( )<br>
 **Date:** <br>
 [Archive](https://ipfs.io/ipfs/)
+
+[^5]: **Title:** [Dietary Polyphenols as Modulators of Bifidobacterium in the Human Gut Microbiota](https://doi.org/10.3390/nu18050782)<br>
+**Publication:** [Nutrients](https://www.mdpi.com/journal/nutrients)<br>
+**Date:** 2026<br>
+**Study Type:** Systematic Review and Meta-Analysis (Human Intervention Studies)<br>
+**Author(s):** Corina Dalia Toderescu, Mohamudha Parveen, Svetlana Trifunschi, Alexandru Oancea, Gentiana Camelia Ciubuc Jurj, Iulia Gabriela Cresneac, Melania Florina Munteanu, Ioana Ciopanoiu, Casiana Boru, Elena Narcisa Pogurschi, Catalin Ionite, Alina Stefanache, Ionut Iulian Lungu<br>
+**Copy:** [Source](https://www.mdpi.com/2072-6643/18/5/782), [PDF](https://www.mdpi.com/2072-6643/18/5/782/pdf)
