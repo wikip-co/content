@@ -4,9 +4,16 @@ tags:
 - Anorexigenic
 - Anticholinesterase
 - Antibacterial
+- Anti-inflammatory
 - Antioxidant
 - Brain Health
 - Neuroprotective
+- Cognitive Decline
+- Memory
+- Executive Function
+- Mood
+- Alzheimer's Prevention
+- Neurogenic
 - Coronary Artery Disease
 - Diabetes
 - Infections
@@ -50,6 +57,15 @@ Reduces appetite, resulting in lower food consumption, leading to weight loss.[^
 - The combination of EGCG also suppresses body weight gain and fat accumulation.[^2]
 
 ### Brain Health
+
+#### Cognitive Health
+
+Green tea consumption was consistently associated with a reduced risk of cognitive decline in a systematic review of 22 studies (14 human and 8 animal studies).[^11]
+
+- EGCG and L-theanine are the primary bioactive compounds supporting cognitive function, with demonstrated promise in reducing cognitive decline, a common precursor to neurodegenerative diseases like Alzheimer's.[^11]
+- Preclinical studies identified neuroprotective mechanisms including antioxidant, anti-inflammatory, and neurogenic effects.[^11]
+- Clinical trials demonstrated improvements in memory, executive function, and mood.[^11]
+- The cognitive benefits of green tea depend on several modulating factors, including sleep quality, genetic background, and tea formulation.[^11]
 
 #### Acetylcholinesterase inhibitor (Anticholinesterase)
 
@@ -293,10 +309,9 @@ Both EGCG and standardized green tea extract can increase CD206 expression, but 
 **Institutions:** Department of Pharmacology, Pyatigorsk Medical and Pharmaceutical Institute, Russia<br>
 **Copy:** [archive](https://drive.proton.me/urls/0XPW577YX4#TrcAJ82AKZaa)
 
-[^11]: **Title:** []()<br>
-**Publication:** []()<br>
-**Date:** <br>
-**Study Type:** Animal Study, Commentary, Human Study: In Vitro - In Vivo - In Silico, Human: Case Report, Meta Analysis, Review<br>
-**Author(s):** <br>
-**Institutions:** <br>
-**Copy:** [archive](https://ipfs.io/ipfs/), [archive-mirror](https://cloudflare-ipfs.com/ipfs/)
+[^11]: **Title:** [Green Tea (Camellia sinensis) and Cognitive Health: A Systematic Review of Mechanisms, Clinical Evidence, and Neuroprotective Potential](https://doi.org/10.65346/2599-056X.2419)<br>
+**Publication:** [Folia Medica Indonesiana](https://scholarly.unair.ac.id/fk-fmi)<br>
+**Date:** 2025<br>
+**Study Type:** Systematic Review<br>
+**Author(s):** Elisha Rosalyn Rosdah, Eka Febri Zulissetiana, Irfannuddin Irfannuddin<br>
+**Institutions:** Universitas Sriwijaya, Palembang, Indonesia; Universitas Indo Global Mandiri, Palembang, Indonesia
