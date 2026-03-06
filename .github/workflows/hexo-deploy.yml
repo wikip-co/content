@@ -86,10 +86,10 @@ jobs:
           git push
         fi
         cd ..
-        git pull --rebase
         git add .
         if ! git diff --cached --quiet; then
           git commit -m "workflow deploy"
+          git pull --rebase
           git push
         fi
 
