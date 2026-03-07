@@ -1,6 +1,6 @@
-# Scrappyling Agent Tool
+# Web Scraping Tool
 
-This tool scrapes a research URL and converts the article content to markdown for downstream repository updates.
+This tool scrapes a URL and converts the article content to markdown for downstream repository updates.
 
 ## Location
 
@@ -29,7 +29,7 @@ python3 main.py "<URL>" "<output_file.md>"
 
 ```bash
 cd .github/agent-tools/web-scraper
-uv run main.py "https://example.org/research-article" "../../Current Events/Research/article-review.md"
+uv run main.py "https://example.org/article" "../../Current Events/Research/article-review.md"
 ```
 
 ## Notes
