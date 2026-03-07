@@ -1,6 +1,6 @@
-# Shared Content Repository
+# Details
 
-This repository contains the unified markdown content for both wikip.co and anthonyrussano.com.
+This repository contains the markdown articles for use in a hexo.js site.  This repo is a submodule in multiple other repos that contain hexo.js sites.
 
 ## Architecture
 
