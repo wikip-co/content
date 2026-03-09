@@ -69,29 +69,24 @@ jobs:
       run: |
         git config --global user.email "me@anthonyrussano.com"
         git config --global user.name "Anthony Russano"
-        git submodule update --init --remote site/source/_posts
+        git submodule init
+        git submodule update
+        git pull
         cd public
         git switch main
         git pull
         rm -rf *
         cd ..
-        cd site
-        npm ci --no-audit --no-fund
+        cd site/source/_posts
+        git switch main
+        git switch pull
+        cd ../..
         node_modules/hexo/bin/hexo gen -c 1
         cd ..
         cd public
         git add .
-        if ! git diff --cached --quiet; then
-          git commit -m "workflow publish"
-          git push
-        fi
-        cd ..
-        git add .
-        if ! git diff --cached --quiet; then
-          git commit -m "workflow deploy"
-          git pull --rebase
-          git push
-        fi
+        git commit -m "workflow publish"
+        git push
 
     - name: Prepare Docker Image
       if: inputs.enable_docker
