@@ -46,4 +46,6 @@ To add or edit blog posts:
 
 ## Validation
 
-- `.github/scripts/validate_content.py`: Checks frontmatter, missing `tags:`, and duplicate effective permalinks
+- `.github/scripts/validate_content.py`: Checks frontmatter, missing `tags:`, and duplicate effective permalinks by default
+- `--warn-empty-tags`: Opt-in warning mode for legacy files whose `tags:` field exists but is still empty
+- `--warn-legacy-filenames`: Opt-in warning mode for older non-kebab-case filenames that are still valid in the repo today

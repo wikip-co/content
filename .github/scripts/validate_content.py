@@ -7,6 +7,7 @@ import re
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 SKIP_DIRS = {".git", ".github", ".venv", "node_modules", "__pycache__"}
 VALID_FILENAME_RE = re.compile(r"^[a-z0-9-]+\.md$")
@@ -37,7 +38,7 @@ def iter_markdown_files(repo_root: Path) -> list[Path]:
     return sorted(files)
 
 
-def parse_frontmatter(path: Path) -> tuple[dict[str, str], list[Issue]]:
+def parse_frontmatter(path: Path) -> tuple[dict[str, Any], list[Issue]]:
     text = path.read_text(encoding="utf-8")
     rel_path = str(path)
     issues: list[Issue] = []
@@ -57,29 +58,51 @@ def parse_frontmatter(path: Path) -> tuple[dict[str, str], list[Issue]]:
         issues.append(Issue("error", "unterminated_frontmatter", rel_path, "missing YAML frontmatter closing delimiter"))
         return {}, issues
 
-    frontmatter: dict[str, str] = {}
+    frontmatter: dict[str, Any] = {}
+    current_key: str | None = None
+    list_values: dict[str, list[str]] = {}
     for raw_line in lines[1:end_index]:
         line = raw_line.rstrip()
         if not line or line.lstrip().startswith("#"):
             continue
-        if line.lstrip().startswith("-"):
+        if line.lstrip().startswith("-") and current_key:
+            value = line.lstrip()[1:].strip().strip("'\"")
+            list_values.setdefault(current_key, []).append(value)
             continue
         if ":" not in line:
             continue
         key, value = line.split(":", 1)
-        frontmatter[key.strip()] = value.strip().strip("'\"")
+        current_key = key.strip()
+        frontmatter[current_key] = value.strip().strip("'\"")
+
+    for key, values in list_values.items():
+        frontmatter[key] = values
 
     return frontmatter, issues
 
 
-def build_route_key(path: Path, frontmatter: dict[str, str], repo_root: Path) -> str:
-    explicit_permalink = frontmatter.get("permalink", "").strip().strip("/")
+def build_route_key(path: Path, frontmatter: dict[str, Any], repo_root: Path) -> str:
+    explicit_permalink = str(frontmatter.get("permalink", "")).strip().strip("/")
     if explicit_permalink:
         return explicit_permalink
     return path.relative_to(repo_root).stem
 
 
-def validate(repo_root: Path) -> list[Issue]:
+def has_non_empty_tags(frontmatter: dict[str, Any]) -> bool:
+    tags = frontmatter.get("tags")
+    if tags is None:
+        return False
+    if isinstance(tags, list):
+        return any(str(tag).strip() for tag in tags)
+    return bool(str(tags).strip())
+
+
+def validate(
+    repo_root: Path,
+    *,
+    warn_legacy_filenames: bool = False,
+    warn_empty_tags: bool = False,
+) -> list[Issue]:
     issues: list[Issue] = []
     route_map: dict[str, list[str]] = defaultdict(list)
 
@@ -98,8 +121,10 @@ def validate(repo_root: Path) -> list[Issue]:
                 issues.append(Issue("error", "invalid_tags_key", rel_path, "frontmatter must use tags:, not tag: or tage:"))
             else:
                 issues.append(Issue("error", "missing_tags_key", rel_path, "frontmatter is missing tags"))
+        elif warn_empty_tags and not has_non_empty_tags(frontmatter):
+            issues.append(Issue("warning", "empty_tags", rel_path, "tags list is present but empty"))
 
-        if not VALID_FILENAME_RE.match(path.name):
+        if warn_legacy_filenames and not VALID_FILENAME_RE.match(path.name):
             issues.append(Issue("warning", "legacy_filename", rel_path, "filename is not lowercase kebab-case"))
 
         route_key = build_route_key(path, frontmatter, repo_root)
@@ -132,10 +157,24 @@ def main(argv: list[str] | None = None) -> int:
         default=50,
         help="Maximum warning lines to print in text mode before summarizing the remainder.",
     )
+    parser.add_argument(
+        "--warn-legacy-filenames",
+        action="store_true",
+        help="Include warnings for legacy filenames that are not lowercase kebab-case.",
+    )
+    parser.add_argument(
+        "--warn-empty-tags",
+        action="store_true",
+        help="Include warnings for files whose tags list is present but empty.",
+    )
     args = parser.parse_args(argv)
 
     repo_root = Path(args.repo_root).expanduser().resolve()
-    issues = validate(repo_root)
+    issues = validate(
+        repo_root,
+        warn_legacy_filenames=args.warn_legacy_filenames,
+        warn_empty_tags=args.warn_empty_tags,
+    )
     error_count = sum(1 for issue in issues if issue.severity == "error")
     warning_count = sum(1 for issue in issues if issue.severity == "warning")
 

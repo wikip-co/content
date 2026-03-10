@@ -15,6 +15,8 @@ tags:
 
 This article documents the implementation of a shared content repository architecture using Git submodules and GitHub Actions to manage markdown content across multiple static site deployments. The solution enables centralized content management with automated deployment to multiple frontends.
 
+For the current operator/contributor guide and rendered architecture diagrams, see [Shared Content Project Guide](/shared-content-project-guide/).
+
 ## Architecture Overview
 
 The implementation uses a three-repository structure:
@@ -131,7 +133,7 @@ Update `.gitmodules` to track the main branch:
     branch = main
 ```
 
-**Reasoning**: By specifying `branch = main`, `git submodule update --remote` will fetch the latest commit from the main branch rather than staying locked to a specific commit. This enables automatic content updates.
+**Reasoning**: The branch setting is still useful metadata for local workflows and explicit fetches, but the current deployment flow no longer relies on `git submodule update --remote` alone. The live build now receives the exact content SHA through `repository_dispatch` and checks out that specific revision for reproducibility.
 
 ### Step 6: Create Trigger Workflow in Content Repository
 
@@ -164,7 +166,7 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.TRIGGER_TOKEN }}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/repos/wikip-co/wikip.co/dispatches \
-            -d '{"event_type":"content-updated","client_payload":{}}'
+            -d '{"event_type":"content-updated","client_payload":{"content_repository":"'"${{ github.repository }}"'","content_ref":"'"${{ github.ref_name }}"'","content_sha":"'"${{ github.sha }}"'","source_run_url":"'"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"'"}}'
 
       - name: Trigger anthonyrussano.com rebuild
         run: |
@@ -174,7 +176,7 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.TRIGGER_TOKEN }}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/repos/anthonyrussano/anthonyrussano.com/dispatches \
-            -d '{"event_type":"content-updated","client_payload":{}}'
+            -d '{"event_type":"content-updated","client_payload":{"content_repository":"'"${{ github.repository }}"'","content_ref":"'"${{ github.ref_name }}"'","content_sha":"'"${{ github.sha }}"'","source_run_url":"'"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"'"}}'
 ```
 
 **Reasoning**: Using `repository_dispatch` events allows triggering workflows in other repositories. The workflow only runs when `.md` files change, avoiding unnecessary builds for infrastructure changes.
@@ -198,7 +200,8 @@ gh secret list -R wikip-co/content
 
 Modify the deployment workflows in both site repositories to:
 1. Listen for `repository_dispatch` events
-2. Update submodules to pull latest content
+2. Pass the dispatched content ref/SHA into a reusable deploy workflow
+3. Resolve the content submodule to that exact revision before the build starts
 
 **For wikip.co** (`/.github/workflows/generator.yml`):
 
@@ -214,18 +217,19 @@ on:
       - 'site/**'
 ```
 
-Update the build step:
+Update the site workflow to call the reusable deploy workflow:
 
 ```yaml
-- name: Build site
-  env:
-    NODE_OPTIONS: --max-old-space-size=5168
-  run: |
-    git config --global user.email "me@anthonyrussano.com"
-    git config --global user.name "Anthony Russano"
-    git submodule update --init --remote
-    git pull
-    # ... rest of build steps
+jobs:
+  build:
+    uses: wikip-co/content/.github/workflows/hexo-deploy.yml@main
+    with:
+      site_name: wikip.co
+      branch: main
+      content_ref: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.content_ref || 'main' }}
+      content_sha: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.content_sha || '' }}
+      enable_docker: true
+      enable_encryption: false
 ```
 
 **For anthonyrussano.com** (`.github/workflows/generator.yml`):
@@ -234,8 +238,8 @@ Same changes as wikip.co, but with `master` branch instead of `main`.
 
 **Reasoning**:
 - `repository_dispatch` with type `content-updated` allows external triggers from the content repo
-- `git submodule update --init --remote` fetches the latest commit from the tracked branch (main)
-- Removing `--merge` flag avoids merge conflicts by simply checking out the latest commit
+- Passing `content_sha` through the dispatch payload makes the content selection reproducible
+- A reusable workflow keeps the build/publish logic in one place instead of copying shell steps between site repos
 
 ### Step 9: Add Email Notifications (Optional)
 
@@ -289,11 +293,12 @@ Add email notification step to workflows:
 When a markdown file is updated in the content repository:
 
 1. **Content repo** workflow triggers on push to main
-2. GitHub Actions sends `repository_dispatch` events to both site repos
+2. GitHub Actions sends `repository_dispatch` events to both site repos, including the exact content SHA
 3. **Site repos** receive the event and trigger their workflows
 4. Site workflows:
-   - Check out code with submodules
-   - Run `git submodule update --init --remote` to get latest content
+   - Check out code with full history and submodules
+   - Resolve the content submodule to the dispatched SHA
+   - Restore markdown mtimes from Git history so Hexo `updated_option: 'mtime'` stays meaningful
    - Build Hexo site
    - Push generated HTML to public submodule
    - Build and push Docker image
@@ -301,16 +306,21 @@ When a markdown file is updated in the content repository:
 
 ## Common Issues and Solutions
 
-### Issue: "refusing to merge unrelated histories"
+### Issue: Rebuild picked up the wrong content revision
 
-**Problem**: Using `git submodule update --remote --merge` causes merge errors.
+**Problem**: A site rebuild that simply tracks `main` can drift away from the exact content commit that triggered it.
 
-**Solution**: Remove the `--merge` flag:
-```bash
-git submodule update --init --remote
-```
+**Solution**: Pass `content_ref` and `content_sha` through `repository_dispatch`, then detach the content submodule at that SHA inside the reusable workflow.
 
-**Reasoning**: The submodule just needs to check out the latest commit, not merge changes.
+**Reasoning**: The site build becomes deterministic and can be reproduced later.
+
+### Issue: Hexo `updated` dates drift after CI rebuilds
+
+**Problem**: When Hexo uses `updated_option: 'mtime'`, a fresh checkout makes many files look newly updated unless mtimes are restored from Git history.
+
+**Solution**: Check out with full history (`fetch-depth: 0`) and then restore each markdown file's mtime from its last modifying commit before running the Hexo build.
+
+**Reasoning**: This preserves meaningful `updated` ordering without changing the global permalink strategy.
 
 ### Issue: Git push rejected during workflow
 
@@ -367,7 +377,7 @@ Content served via API (headless CMS) instead of Git submodules.
 
 ## Conclusion
 
-This Git submodule approach provides an optimal balance between automation and simplicity for managing shared content across multiple static sites. It leverages GitHub Actions for orchestration while maintaining the simplicity and version control benefits of Git.
+This Git submodule approach provides an optimal balance between automation and simplicity for managing shared content across multiple static sites. It leverages GitHub Actions for orchestration while keeping content selection deterministic through `content_sha` dispatch payloads and preserving Hexo update dates through Git-based mtime restoration.
 
 The implementation required approximately:
 - **3,198 markdown files** unified from two repositories

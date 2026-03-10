@@ -1,0 +1,109 @@
+title: Manual Agent Tooling Flow
+direction: LR
+clusters:
+  - id: operator
+    label: Operator Commands
+  - id: tools
+    label: Agent Tools
+  - id: services
+    label: External Services
+  - id: repo
+    label: Content Repository
+nodes:
+  - id: operator_shell
+    label: maintainer shell
+    cluster: operator
+  - id: agent_workflow
+    label: ./agent-workflow
+    cluster: operator
+  - id: queue_cmd
+    label: queue
+    cluster: tools
+  - id: match_cmd
+    label: match
+    cluster: tools
+  - id: prepare_cmd
+    label: prepare
+    cluster: tools
+  - id: wiki_automation
+    label: wiki-automation
+    cluster: tools
+  - id: gmail_reader
+    label: gmail-reader
+    cluster: tools
+  - id: web_scraper
+    label: web-scraper
+    cluster: tools
+  - id: image_upload
+    label: image-upload
+    cluster: tools
+  - id: gmail
+    label: Gmail / Scholar alerts
+    cluster: services
+  - id: source_url
+    label: source article URL
+    cluster: services
+  - id: cloudinary
+    label: Cloudinary
+    cluster: services
+  - id: queue_packet
+    label: queue packet JSON
+    cluster: repo
+  - id: article_stub
+    label: markdown article stub
+    cluster: repo
+  - id: validator
+    label: validate_content.py
+    cluster: repo
+edges:
+  - from: operator_shell
+    to: agent_workflow
+    label: run wrapper
+  - from: agent_workflow
+    to: queue_cmd
+    label: queue
+  - from: agent_workflow
+    to: match_cmd
+    label: match
+  - from: agent_workflow
+    to: prepare_cmd
+    label: prepare
+  - from: queue_cmd
+    to: wiki_automation
+    label: delegate
+  - from: match_cmd
+    to: wiki_automation
+    label: delegate
+  - from: prepare_cmd
+    to: wiki_automation
+    label: delegate
+  - from: wiki_automation
+    to: gmail_reader
+    label: queue
+  - from: wiki_automation
+    to: web_scraper
+    label: prepare
+  - from: wiki_automation
+    to: image_upload
+    label: optional image upload
+  - from: gmail_reader
+    to: gmail
+    label: search inbox
+  - from: gmail_reader
+    to: queue_packet
+    label: candidate URLs + matches
+  - from: web_scraper
+    to: source_url
+    label: fetch and parse
+  - from: web_scraper
+    to: article_stub
+    label: citation packet
+  - from: image_upload
+    to: cloudinary
+    label: upload / lookup
+  - from: wiki_automation
+    to: article_stub
+    label: optional create-new
+  - from: article_stub
+    to: validator
+    label: validate before commit

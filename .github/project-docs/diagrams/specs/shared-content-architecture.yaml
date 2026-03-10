@@ -1,0 +1,118 @@
+title: Shared Content Project Architecture
+direction: LR
+clusters:
+  - id: repos
+    label: Git Repositories
+  - id: github_actions
+    label: GitHub Actions
+  - id: local_ops
+    label: Local Operator Workflow
+  - id: services
+    label: External Services
+nodes:
+  - id: content_repo
+    label: wikip-co/content
+    cluster: repos
+  - id: wikip_repo
+    label: wikip-co/wikip.co
+    cluster: repos
+  - id: personal_repo
+    label: anthonyrussano/anthonyrussano.com
+    cluster: repos
+  - id: public_repo
+    label: wikip-co/public
+    cluster: repos
+  - id: trigger_sites
+    label: trigger-sites.yml
+    cluster: github_actions
+  - id: wikip_generator
+    label: wikip.co generator.yml
+    cluster: github_actions
+  - id: reusable_workflow
+    label: hexo-deploy.yml
+    cluster: github_actions
+  - id: manual_launcher
+    label: ./agent-workflow
+    cluster: local_ops
+  - id: wiki_automation
+    label: wiki-automation
+    cluster: local_ops
+  - id: gmail_reader
+    label: gmail-reader
+    cluster: local_ops
+  - id: web_scraper
+    label: web-scraper
+    cluster: local_ops
+  - id: image_upload
+    label: image-upload
+    cluster: local_ops
+  - id: github_dispatch
+    label: GitHub repository_dispatch
+    cluster: services
+  - id: github_actions_service
+    label: GitHub-hosted runners
+    cluster: services
+  - id: cloudinary
+    label: Cloudinary
+    cluster: services
+  - id: gmail
+    label: Gmail / Google Scholar
+    cluster: services
+  - id: dockerhub
+    label: Docker Hub
+    cluster: services
+edges:
+  - from: content_repo
+    to: trigger_sites
+    label: push markdown
+  - from: trigger_sites
+    to: github_dispatch
+    label: POST content_ref + content_sha
+  - from: github_dispatch
+    to: wikip_generator
+    label: content-updated
+  - from: wikip_repo
+    to: wikip_generator
+    label: push site/**
+  - from: wikip_generator
+    to: reusable_workflow
+    label: workflow_call
+  - from: reusable_workflow
+    to: github_actions_service
+    label: build runner
+  - from: reusable_workflow
+    to: content_repo
+    label: checkout content submodule
+  - from: reusable_workflow
+    to: public_repo
+    label: publish generated site
+  - from: reusable_workflow
+    to: dockerhub
+    label: optional docker push
+  - from: content_repo
+    to: manual_launcher
+    label: local authoring
+  - from: manual_launcher
+    to: wiki_automation
+    label: queue / match / prepare
+  - from: wiki_automation
+    to: gmail_reader
+    label: queue
+  - from: wiki_automation
+    to: web_scraper
+    label: prepare
+  - from: wiki_automation
+    to: image_upload
+    label: optional image upload
+  - from: gmail_reader
+    to: gmail
+    label: search inbox
+  - from: image_upload
+    to: cloudinary
+    label: upload/check assets
+  - from: web_scraper
+    to: content_repo
+    label: article packet + citations
+  - from: personal_repo
+    to: github_dispatch
+    label: also receives dispatch
