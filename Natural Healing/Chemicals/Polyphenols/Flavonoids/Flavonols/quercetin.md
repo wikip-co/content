@@ -32,6 +32,7 @@ tags:
 - Liver Health
 - Psychostimulant
 - Anti-Infective
+- Colorectal Cancer
 ---
 **Quercetin** is a plant flavonol from the flavonoid group of polyphenols.  It is widely distributed among different fruits and vegetables.[^1]
 
@@ -148,6 +149,15 @@ Quercetin dihydrate has the exciting potential to be used as a cancer chemopreve
 
 The growth rate of tumor volumes and masses treated with quercetin dihydrate were decreased.[^6]
 
+#### Colorectal Cancer
+
+A systematic review and meta-analysis of preclinical studies found that quercetin exerts beneficial effects across multiple facets of colorectal cancer (CRC) treatment.[^9]
+
+- Quercetin treatment significantly reduced the incidence of CRC (SMD -1.22, p = 0.004) compared to control groups.[^9]
+- Quercetin alleviated inflammation and oxidative stress in colorectal cancer models.[^9]
+- Quercetin effectively improved the degree of crypt lesions and alleviated precancerous lesions (SMD -1.40, p = 0.02).[^9]
+- Quercetin demonstrated significant inhibitory effects on tumor cell proliferation as determined by PCNA analysis (SMD -8.22, p < 0.00001).[^9]
+
 ### Neurodegenerative Diseases
 
 Quercetin Disaggregates Prion Fibrils and Decreases Fibril-Induced Cytotoxicity and Oxidative Stress.[^2]
@@ -234,3 +244,9 @@ The NAD+ precursors Nicotinic acid and Nicotinamide, when administered with Quer
 [^8]: **Title:** [ ]( )<br>
 **Publication:** [ ]( )<br>
 [Archive](https://ipfs.io/ipfs/)
+
+[^9]: **Title:** [The potential value of quercetin for colorectal cancer: a systematic review and a meta-analysis of preclinical studies](https://doi.org/10.3389/fphar.2025.1642957)<br>
+**Publication:** [Frontiers in Pharmacology](https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2025.1642957/abstract)<br>
+**Date:** 2025/09/05<br>
+**Study Type:** Systematic Review and Meta-Analysis (preclinical animal studies)<br>
+**Author(s):** Duan, Xiucheng, Zhang, Liyuan, Liu, Fenye

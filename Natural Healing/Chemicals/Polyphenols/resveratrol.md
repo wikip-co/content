@@ -29,6 +29,7 @@ tags:
 - SIRT1
 - Mitochondrial Health
 - Immune Modulation
+- Lung Cancer
 ---
 **Resveratrol** is a type of natural phenol produced by several plants. 
 
@@ -150,6 +151,15 @@ Resveratrol induces apoptosis in human gastric carcinoma.[^3]
 
 Resveratrol induces apoptosis in pancreatic cancer cells.
 
+#### Lung Cancer
+
+Resveratrol (RESV) demonstrates significant inhibitory effects on lung cancer in preclinical models.[^16]
+
+- A meta-analysis of 23 in vivo studies (425 animals) found RESV significantly reduced tumor volume, tumor weight, and lung metastases number.[^16]
+- RESV increased the proportion of apoptotic cancer cells without negatively affecting body weight.[^16]
+- The optimal preclinical dose range was 30–100 mg/kg over 25–28 days.[^16]
+- Median lethal dose was 1,560 mg/kg, indicating a favorable safety profile.[^16]
+
 #### Prostate Cancer
 
 Resveratrol enhances radiation sensitivity in prostate cancer by inhibiting cell proliferation and promoting cell senescence and apoptosis.
@@ -238,3 +248,9 @@ The NAD+ precursors Nicotinic acid and Nicotinamide, when administered with Resv
 **Study Type:** Network Pharmacology, Cell Study, Animal Study (OVA-induced allergic rhinitis mouse model)<br>
 **Author(s):** Xinyu Zhou, Yi Yue, Wenwen Qi, Wenqing Zhu, Xinran Liu, Rongcui Sui, Xuanchen Zhou<br>
 **Copy:** [Source](https://onlinelibrary.wiley.com/doi/10.1002/ffj.70074), [PDF](https://onlinelibrary.wiley.com/doi/pdf/10.1002/ffj.70074)
+
+[^16]: **Title:** [Therapeutic effects and safety of resveratrol for lung cancer: an updated preclinical systematic review and meta-analysis](https://doi.org/10.3389/fnut.2025.1644538)<br>
+**Publication:** [Frontiers in Nutrition](https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2025.1644538/abstract)<br>
+**Date:** 2025/08/29<br>
+**Study Type:** Systematic Review and Meta-Analysis (23 in vivo studies, 425 animals)<br>
+**Author(s):** Xiao, Xiang, Wu, Xuanyu, Li, Wenyuan, You, Fengming, Guo, Jing
