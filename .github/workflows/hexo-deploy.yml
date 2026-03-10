@@ -26,6 +26,14 @@ on:
     secrets:
       GIT_TOKEN:
         required: true
+      EMAIL_USERNAME:
+        required: false
+      EMAIL_PASSWORD:
+        required: false
+      EMAIL_SMTP_SERVER:
+        required: false
+      EMAIL_SMTP_PORT:
+        required: false
       BLOG_ENCRYPT_PASSWORD:
         required: false
       DOCKER_USERNAME:
@@ -162,4 +170,3 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.prep.outputs.tags }}
-

@@ -2,10 +2,11 @@
 
 Cron-friendly helper CLI for the content repo's agent workflow.
 
-It does four things:
+It does five things:
 
 - search local markdown content by title, tags, permalink, path, and body
 - build a structured queue from `gmail-reader`
+- query the stored gmail-reader backlog for unprocessed candidate articles
 - match scraped or proposed titles against existing markdown articles
 - prepare a scrape packet and optionally create a new article stub with optional Cloudinary upload
 
@@ -49,6 +50,12 @@ uv run wiki-automation queue \
   --output-dir ./.github/agent-tools/wiki-automation/out
 ```
 
+Query the existing backlog for the strongest unprocessed open-access candidates:
+
+```bash
+uv run wiki-automation backlog --open-access --min-score 18 --limit 20
+```
+
 Scrape a URL, match it to the repo, and create a new article stub:
 
 ```bash
@@ -78,6 +85,7 @@ The CLI always prints JSON:
 
 - `search` returns local markdown matches with matched fields, matched terms, and a snippet
 - `queue` writes a queue packet with gmail-reader results plus content match candidates
+- `backlog` returns stored gmail-reader candidates filtered for downstream article work
 - `prepare` writes a scrape packet and, when requested, a new article stub in the repo
 - `match` returns scored existing article candidates
 
@@ -98,6 +106,7 @@ For your current workflow, the simpler entrypoint is the repo-level manual launc
 Other common manual commands:
 
 ```bash
+./agent-workflow backlog --open-access --min-score 18 --limit 20
 ./agent-workflow match "postpartum hypertension"
 ./agent-workflow search "postpartum hypertension" --match phrase
 ./agent-workflow prepare "https://example.org/article" --category "Child Development/Infant/Nutrition" --create-new --tag Nutrition

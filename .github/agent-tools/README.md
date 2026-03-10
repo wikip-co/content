@@ -40,6 +40,7 @@ To add or edit blog posts:
 
 ## Manual Launcher
 
+- `./agent-workflow backlog`: Query the gmail-reader backlog for unprocessed candidates
 - `./agent-workflow queue`: Build a fresh intake packet on demand
 - `./agent-workflow match "<topic>"`: Find likely existing articles
 - `./agent-workflow search "<query>"`: Search local markdown content before creating or editing an article
@@ -48,6 +49,7 @@ To add or edit blog posts:
 
 ## Validation
 
+- `.github/workflows/automation-checks.yml`: Lints workflow files and smoke-tests the agent tooling on pushes and PRs that touch automation files
 - `.github/scripts/validate_content.py`: Checks frontmatter, missing `tags:`, and duplicate effective permalinks by default
 - `--warn-empty-tags`: Opt-in warning mode for legacy files whose `tags:` field exists but is still empty
 - `--warn-legacy-filenames`: Opt-in warning mode for older non-kebab-case filenames that are still valid in the repo today
