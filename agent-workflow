@@ -19,6 +19,7 @@ require_command() {
 usage() {
   cat <<'EOF'
 Usage:
+  ./agent-workflow backlog [wiki-automation backlog args...]
   ./agent-workflow queue [wiki-automation queue args...]
   ./agent-workflow match "<title or topic>" [wiki-automation match args...]
   ./agent-workflow prepare "<url>" [wiki-automation prepare args...]
@@ -26,6 +27,17 @@ Usage:
   ./agent-workflow help
 
 What each command does:
+  backlog
+    Query the gmail-reader SQLite DB for unprocessed candidate articles.
+    Defaults:
+      --status selected
+      --limit 20
+    Filters:
+      --min-score N      Only return articles with score >= N
+      --source KEYWORD   Filter by domain keyword (e.g. frontiersin, mdpi)
+      --open-access      Only return articles from open-access sources
+      --include-processed  Include already-processed articles
+
   queue
     Manually pull recent Gmail Reader candidates and write a queue packet.
     Defaults:
@@ -40,14 +52,21 @@ What each command does:
 
   prepare
     Scrape a URL, match it to the repo, and optionally create a new article stub.
+    Marks the article as processed in the gmail-reader DB after a successful scrape.
+    Flags:
+      --match-existing   Lower match threshold and also match by alert name keywords
+      --alert-name NAME  Alert name for keyword matching with --match-existing
 
   validate
     Run the content validator directly against this repo.
 
 Examples:
+  ./agent-workflow backlog --status selected --min-score 18 --source frontiersin --limit 20
+  ./agent-workflow backlog --open-access --min-score 15 --limit 50
   ./agent-workflow queue --topic "health nutrition"
   ./agent-workflow match "postpartum hypertension"
   ./agent-workflow prepare "https://example.org/article" --category "Child Development/Infant/Nutrition" --create-new --tag Nutrition
+  ./agent-workflow prepare "https://example.org/article" --match-existing --alert-name "infant nutrition"
   ./agent-workflow validate
 EOF
 }
@@ -104,6 +123,12 @@ run_match() {
   uv run --directory "$WIKI_AUTOMATION_DIR" wiki-automation match "$@"
 }
 
+run_backlog() {
+  require_command uv
+
+  uv run --directory "$WIKI_AUTOMATION_DIR" wiki-automation backlog "$@"
+}
+
 run_prepare() {
   require_command uv
   if (($# < 1)); then
@@ -126,6 +151,9 @@ main() {
   fi
 
   case "$command" in
+    backlog)
+      run_backlog "$@"
+      ;;
     queue)
       run_queue "$@"
       ;;
