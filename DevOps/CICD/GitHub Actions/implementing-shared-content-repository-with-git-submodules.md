@@ -296,7 +296,7 @@ When a markdown file is updated in the content repository:
 2. GitHub Actions sends `repository_dispatch` events to both site repos, including the exact content SHA
 3. **Site repos** receive the event and trigger their workflows
 4. Site workflows:
-   - Check out code with full history and submodules
+   - Check out the site repo itself, then initialize `public` shallowly and the content submodule with full history
    - Resolve the content submodule to the dispatched SHA
    - Restore markdown mtimes from Git history so Hexo `updated_option: 'mtime'` stays meaningful
    - Build Hexo site
@@ -318,9 +318,17 @@ When a markdown file is updated in the content repository:
 
 **Problem**: When Hexo uses `updated_option: 'mtime'`, a fresh checkout makes many files look newly updated unless mtimes are restored from Git history.
 
-**Solution**: Check out with full history (`fetch-depth: 0`) and then restore each markdown file's mtime from its last modifying commit before running the Hexo build.
+**Solution**: Initialize the content submodule with full history and then restore each markdown file's mtime from its last modifying commit before running the Hexo build.
 
 **Reasoning**: This preserves meaningful `updated` ordering without changing the global permalink strategy.
+
+### Issue: `public` submodule becomes unpopulated after the build
+
+**Problem**: `hexo clean` deletes the configured output directory, which in this setup is the `public` submodule worktree.
+
+**Solution**: Preserve the `public/.git` file across the clean/build step so the generated output lands back into the same submodule worktree.
+
+**Reasoning**: The workflow can clean and rebuild static output without severing the Git identity needed for the publish step.
 
 ### Issue: Git push rejected during workflow
 

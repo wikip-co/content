@@ -48,8 +48,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GIT_TOKEN }}
-          fetch-depth: 0
-          submodules: recursive
+          fetch-depth: 1
+          submodules: false
 
       - uses: actions/setup-node@v4
         with:
@@ -70,7 +70,8 @@ jobs:
       - name: Sync submodules
         run: |
           git submodule sync --recursive
-          git submodule update --init --recursive
+          git -c protocol.version=2 submodule update --init --depth 1 public
+          git -c protocol.version=2 submodule update --init site/source/_posts
 
       - name: Resolve content revision
         if: inputs.content_sha != ''
@@ -114,7 +115,11 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=5168
         run: |
+          PUBLIC_GITFILE="$RUNNER_TEMP/public.git"
+          cp public/.git "$PUBLIC_GITFILE"
           npm --prefix site run clean
+          mkdir -p public
+          cp "$PUBLIC_GITFILE" public/.git
           npm --prefix site run build
 
       - name: Publish generated site

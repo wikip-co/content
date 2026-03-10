@@ -40,7 +40,7 @@ The deploy path is:
 2. `trigger-sites.yml` fires only for markdown changes.
 3. That workflow sends `repository_dispatch` events to the site repositories and includes the exact `content_ref` and `content_sha`.
 4. The site repo workflow calls the reusable `hexo-deploy.yml` workflow from the content repo.
-5. The reusable workflow resolves the content submodule to the dispatched SHA, restores markdown mtimes from Git history, validates the content tree, builds Hexo, and publishes the generated output.
+5. The reusable workflow initializes `public` shallowly, initializes the content submodule with full history, resolves the content submodule to the dispatched SHA, restores markdown mtimes from Git history, validates the content tree, builds Hexo, and publishes the generated output.
 
 Two implementation details matter:
 
