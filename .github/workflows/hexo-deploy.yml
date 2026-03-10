@@ -66,6 +66,7 @@ jobs:
         run: |
           git config --global user.email "me@anthonyrussano.com"
           git config --global user.name "Anthony Russano"
+          git config --global url."https://x-access-token:${{ secrets.GIT_TOKEN }}@github.com/".insteadOf https://github.com/
 
       - name: Sync submodules
         run: |
