@@ -133,11 +133,16 @@ def score_match(title: str, article: ArticleRecord) -> float:
     return min(score, 100.0)
 
 
-def top_matches(articles: list[ArticleRecord], title: str, limit: int = 5) -> list[dict[str, Any]]:
+def top_matches(
+    articles: list[ArticleRecord],
+    title: str,
+    limit: int = 5,
+    min_score: float = 30.0,
+) -> list[dict[str, Any]]:
     matches = []
     for article in articles:
         score = score_match(title, article)
-        if score < 30:
+        if score < min_score:
             continue
         matches.append(
             {
@@ -147,8 +152,65 @@ def top_matches(articles: list[ArticleRecord], title: str, limit: int = 5) -> li
                 "permalink": article.permalink,
                 "route_key": article.route_key,
                 "score": round(score, 2),
+                "match_method": "score",
             }
         )
+    matches.sort(key=lambda item: (-item["score"], item["path"].lower()))
+    return matches[:limit]
+
+
+def alert_name_matches_article(alert_name: str, article: ArticleRecord) -> bool:
+    """Return True if any significant keyword from the alert name appears in the article path or title."""
+    keywords = [kw for kw in re.split(r'[\s"\']+', alert_name.lower()) if len(kw) > 3]
+    path_lower = article.path.lower()
+    title_lower = article.title.lower()
+    return any(kw in path_lower or kw in title_lower for kw in keywords)
+
+
+def top_matches_extended(
+    articles: list[ArticleRecord],
+    title: str,
+    alert_name: str,
+    limit: int = 5,
+) -> list[dict[str, Any]]:
+    """Lower-threshold matching plus alert-name keyword matching for --match-existing."""
+    seen_paths: set[str] = set()
+    matches = []
+
+    for article in articles:
+        score = score_match(title, article)
+        if score < 15:
+            continue
+        seen_paths.add(article.path)
+        matches.append(
+            {
+                "path": article.path,
+                "title": article.title,
+                "tags": article.tags,
+                "permalink": article.permalink,
+                "route_key": article.route_key,
+                "score": round(score, 2),
+                "match_method": "score",
+            }
+        )
+
+    if alert_name:
+        for article in articles:
+            if article.path in seen_paths:
+                continue
+            if alert_name_matches_article(alert_name, article):
+                matches.append(
+                    {
+                        "path": article.path,
+                        "title": article.title,
+                        "tags": article.tags,
+                        "permalink": article.permalink,
+                        "route_key": article.route_key,
+                        "score": 0.0,
+                        "match_method": "alert_keyword",
+                    }
+                )
+
     matches.sort(key=lambda item: (-item["score"], item["path"].lower()))
     return matches[:limit]
 
@@ -245,7 +307,15 @@ def prepare_packet(args: argparse.Namespace) -> dict[str, Any]:
         ["main.py", args.url, "--output", str(scrape_output_path)],
     )
 
-    matches = top_matches(articles, scrape["title"], limit=args.limit)
+    if args.match_existing:
+        matches = top_matches_extended(
+            articles,
+            scrape["title"],
+            alert_name=getattr(args, "alert_name", "") or "",
+            limit=args.limit,
+        )
+    else:
+        matches = top_matches(articles, scrape["title"], limit=args.limit)
     image_result = None
     image_public_id = args.image_public_id
     if args.image_file:
@@ -316,6 +386,13 @@ def prepare_packet(args: argparse.Namespace) -> dict[str, Any]:
     packet_path = output_dir / f"{packet_slug}-packet.json"
     packet_path.write_text(json.dumps(packet, indent=2), encoding="utf-8")
     packet["packet_path"] = str(packet_path)
+
+    # Mark the article as processed in the gmail-reader DB (non-fatal if unavailable)
+    try:
+        run_json_tool(GMAIL_READER_DIR, ["gmail-reader", "mark-processed", args.url])
+    except Exception:
+        pass
+
     return packet
 
 
@@ -408,8 +485,54 @@ def build_parser() -> argparse.ArgumentParser:
     prepare_parser.add_argument("--image-folder", help="Optional Cloudinary folder for uploaded images.")
     prepare_parser.add_argument("--limit", type=int, default=5, help="Maximum match candidates to return.")
     prepare_parser.add_argument("--output-dir", default=str(DEFAULT_OUTPUT_DIR), help="Directory for generated scrape packets.")
+    prepare_parser.add_argument(
+        "--match-existing",
+        action="store_true",
+        help="Lower match threshold to 15 and also match by alert name keywords.",
+    )
+    prepare_parser.add_argument(
+        "--alert-name",
+        default="",
+        help="Alert name for keyword matching when --match-existing is set.",
+    )
+
+    backlog_parser = subparsers.add_parser(
+        "backlog",
+        help="Query the gmail-reader DB for unprocessed candidate articles.",
+    )
+    backlog_parser.add_argument(
+        "--status",
+        choices=["selected", "review", "rejected", "all"],
+        default="selected",
+    )
+    backlog_parser.add_argument("--min-score", type=int, default=0)
+    backlog_parser.add_argument(
+        "--source",
+        help="Domain keyword filter (e.g. 'frontiersin', 'mdpi').",
+    )
+    backlog_parser.add_argument("--open-access", action="store_true")
+    backlog_parser.add_argument("--include-processed", action="store_true")
+    backlog_parser.add_argument("--limit", type=int, default=20)
 
     return parser
+
+
+def backlog_query(args: argparse.Namespace) -> dict[str, Any]:
+    ensure_tool_dir(GMAIL_READER_DIR, "gmail-reader")
+    backlog_args = [
+        "gmail-reader",
+        "backlog",
+        "--status", args.status,
+        "--min-score", str(args.min_score),
+        "--limit", str(args.limit),
+    ]
+    if args.source:
+        backlog_args.extend(["--source", args.source])
+    if args.open_access:
+        backlog_args.append("--open-access")
+    if args.include_processed:
+        backlog_args.append("--include-processed")
+    return run_json_tool(GMAIL_READER_DIR, backlog_args)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -423,6 +546,8 @@ def main(argv: list[str] | None = None) -> int:
             result = queue_articles(args)
         elif args.command == "prepare":
             result = prepare_packet(args)
+        elif args.command == "backlog":
+            result = backlog_query(args)
         else:
             parser.error(f"Unsupported command: {args.command}")
             return 1

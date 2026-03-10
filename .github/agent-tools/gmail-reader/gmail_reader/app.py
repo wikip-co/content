@@ -67,6 +67,35 @@ NEGATIVE_TERMS = {
     "livestock": -4,
 }
 
+OPEN_ACCESS_DOMAINS = {
+    "frontiersin.org",
+    "mdpi.com",
+    "pmc.ncbi.nlm.nih.gov",
+    "pubmed.ncbi.nlm.nih.gov",
+}
+
+
+def is_open_access_url(url: str) -> bool:
+    if not url:
+        return False
+    try:
+        hostname = urlparse(url).hostname or ""
+    except Exception:
+        return False
+    hostname = hostname.removeprefix("www.")
+    return any(hostname == domain or hostname.endswith("." + domain) for domain in OPEN_ACCESS_DOMAINS)
+
+
+def _url_matches_source(url: str, source: str) -> bool:
+    """Check whether a URL's hostname contains the given source keyword."""
+    if not url or not source:
+        return True
+    try:
+        hostname = urlparse(url).hostname or ""
+    except Exception:
+        return False
+    return source.lower() in hostname.lower()
+
 
 @dataclass
 class ArticleCandidate:
@@ -240,6 +269,52 @@ def build_parser() -> argparse.ArgumentParser:
         help="Base Gmail search query. Date filters are appended automatically.",
     )
 
+    backlog_parser = subparsers.add_parser(
+        "backlog",
+        help="Query the DB for unprocessed candidate articles from the backlog.",
+    )
+    backlog_parser.add_argument(
+        "--status",
+        choices=["selected", "review", "rejected", "all"],
+        default="selected",
+        help="Filter articles by triage status (default: selected).",
+    )
+    backlog_parser.add_argument(
+        "--min-score",
+        type=int,
+        default=0,
+        help="Minimum score threshold (e.g. --min-score 18).",
+    )
+    backlog_parser.add_argument(
+        "--source",
+        help="Domain keyword filter (e.g. 'frontiersin', 'mdpi'). Implies open-access filtering.",
+    )
+    backlog_parser.add_argument(
+        "--open-access",
+        action="store_true",
+        help="Only return open-access articles (frontiersin, mdpi, pmc, pubmed).",
+    )
+    backlog_parser.add_argument(
+        "--include-processed",
+        action="store_true",
+        help="Include articles already marked as processed.",
+    )
+    backlog_parser.add_argument(
+        "--limit",
+        type=int,
+        default=20,
+        help="Maximum number of rows to return.",
+    )
+
+    mark_processed_parser = subparsers.add_parser(
+        "mark-processed",
+        help="Set processed_at on an article row by URL.",
+    )
+    mark_processed_parser.add_argument(
+        "article_url",
+        help="The article_url to mark as processed.",
+    )
+
     return parser
 
 
@@ -283,6 +358,8 @@ def ensure_db(path: Path) -> sqlite3.Connection:
             reasons_json TEXT NOT NULL,
             created_at TEXT NOT NULL,
             updated_at TEXT NOT NULL,
+            is_open_access INTEGER NOT NULL DEFAULT 0,
+            processed_at TEXT,
             FOREIGN KEY (message_id) REFERENCES messages(message_id)
         )
         """
@@ -293,6 +370,15 @@ def ensure_db(path: Path) -> sqlite3.Connection:
     conn.execute(
         "CREATE INDEX IF NOT EXISTS idx_articles_message_id ON articles(message_id)"
     )
+    # Migrations for existing databases
+    for migration in (
+        "ALTER TABLE articles ADD COLUMN is_open_access INTEGER NOT NULL DEFAULT 0",
+        "ALTER TABLE articles ADD COLUMN processed_at TEXT",
+    ):
+        try:
+            conn.execute(migration)
+        except sqlite3.OperationalError:
+            pass  # column already exists
     conn.commit()
     return conn
 
@@ -625,14 +711,15 @@ def upsert_articles(
     for candidate in candidates:
         now = datetime.utcnow().isoformat(timespec="seconds") + "Z"
         key = article_key(candidate.alert_name, candidate.title, candidate.article_url)
+        oa = 1 if is_open_access_url(candidate.article_url) else 0
         conn.execute(
             """
             INSERT INTO articles (
                 article_key, message_id, alert_name, rank_in_email, title, authors,
                 publication_info, snippet, scholar_url, article_url, pdf_url,
                 format_label, author_count, score, status, reasons_json,
-                created_at, updated_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                created_at, updated_at, is_open_access
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(article_key) DO UPDATE SET
                 message_id = excluded.message_id,
                 rank_in_email = excluded.rank_in_email,
@@ -647,7 +734,8 @@ def upsert_articles(
                 score = excluded.score,
                 status = excluded.status,
                 reasons_json = excluded.reasons_json,
-                updated_at = excluded.updated_at
+                updated_at = excluded.updated_at,
+                is_open_access = excluded.is_open_access
             """,
             (
                 key,
@@ -668,6 +756,7 @@ def upsert_articles(
                 json.dumps(candidate.reasons, separators=(",", ":")),
                 now,
                 now,
+                oa,
             ),
         )
         inserted += 1
@@ -776,6 +865,86 @@ def list_articles(db_path: Path, status: str, alert_name: str | None, limit: int
 
     return {
         "db_path": str(db_path),
+        "articles": articles,
+    }
+
+
+def mark_article_processed(db_path: Path, article_url: str) -> dict[str, Any]:
+    """Set processed_at on unprocessed articles matching article_url."""
+    conn = ensure_db(db_path)
+    now = datetime.utcnow().isoformat(timespec="seconds") + "Z"
+    cur = conn.execute(
+        """
+        UPDATE articles
+        SET processed_at = ?, updated_at = ?
+        WHERE article_url = ? AND processed_at IS NULL
+        """,
+        (now, now, article_url),
+    )
+    updated = cur.rowcount > 0
+    conn.commit()
+    conn.close()
+    return {"updated": updated, "article_url": article_url}
+
+
+def list_backlog(
+    db_path: Path,
+    status: str,
+    min_score: int,
+    source: str | None,
+    open_access_only: bool,
+    include_processed: bool,
+    limit: int,
+) -> dict[str, Any]:
+    """Query the DB for unprocessed candidate articles with optional filters."""
+    conn = ensure_db(db_path)
+    sql = """
+        SELECT article_key, alert_name, title, authors, article_url, pdf_url,
+               score, status, is_open_access, processed_at, created_at, reasons_json
+        FROM articles
+    """
+    clauses: list[str] = []
+    params: list[Any] = []
+
+    if status != "all":
+        clauses.append("status = ?")
+        params.append(status)
+    if min_score > 0:
+        clauses.append("score >= ?")
+        params.append(min_score)
+    if open_access_only or source:
+        clauses.append("is_open_access = 1")
+    if not include_processed:
+        clauses.append("processed_at IS NULL")
+
+    if clauses:
+        sql += " WHERE " + " AND ".join(clauses)
+    sql += " ORDER BY score DESC, alert_name ASC, created_at DESC LIMIT ?"
+    params.append(limit * 3 if source else limit)  # over-fetch when filtering by source
+
+    rows = conn.execute(sql, params).fetchall()
+    conn.close()
+
+    articles = []
+    for row in rows:
+        item = dict(row)
+        item["reasons"] = json.loads(item.pop("reasons_json"))
+        if source and not _url_matches_source(item.get("article_url") or "", source):
+            continue
+        articles.append(item)
+        if len(articles) >= limit:
+            break
+
+    return {
+        "db_path": str(db_path),
+        "filters": {
+            "status": status,
+            "min_score": min_score,
+            "source": source,
+            "open_access_only": open_access_only,
+            "include_processed": include_processed,
+        },
+        "article_count": len(articles),
         "articles": articles,
     }
 
@@ -1001,6 +1170,21 @@ def main(argv: list[str] | None = None) -> int:
                 include_review=args.include_review,
                 save=args.save,
                 base_query=args.query,
+            )
+        elif args.command == "backlog":
+            result = list_backlog(
+                db_path=db_path,
+                status=args.status,
+                min_score=args.min_score,
+                source=args.source,
+                open_access_only=args.open_access,
+                include_processed=args.include_processed,
+                limit=args.limit,
+            )
+        elif args.command == "mark-processed":
+            result = mark_article_processed(
+                db_path=db_path,
+                article_url=args.article_url,
             )
         else:
             parser.error(f"Unsupported command: {args.command}")
