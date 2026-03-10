@@ -39,3 +39,19 @@
   - --match-existing on prepare — without it the agent may miss existing articles
   - "validate and open a PR" — gives the agent a clear stopping condition
   - Any topic/category constraints you care about for that session
+
+I need you to integrate new research into an existing article in this repository.
+
+**How to  Integrate the findings:**
+- Incorporate all relevant findings from the research article into the existing article
+- Every new sentence or bullet point added must include an inline citation reference (e.g., [1], [2]) tied to this source
+- Do not remove or alter existing citations or content — only add to it
+
+**Add the citation:**
+Append the full citation for this research article to the bottom of the article under a `## References` section (or add to the existing references list if one already exists). Use this citation format:
+[Author(s). Title. Journal/Platform. Year. DOI/URL]
+
+**Update keywords:**
+Review the `keywords` section of the article and add any new relevant keywords introduced by this research. Do not remove existing keywords.
+
+Confirm each step as you complete it.
