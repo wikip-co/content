@@ -26,14 +26,6 @@ on:
     secrets:
       GIT_TOKEN:
         required: true
-      EMAIL_USERNAME:
-        required: true
-      EMAIL_PASSWORD:
-        required: true
-      EMAIL_SMTP_SERVER:
-        required: true
-      EMAIL_SMTP_PORT:
-        required: true
       BLOG_ENCRYPT_PASSWORD:
         required: false
       DOCKER_USERNAME:
@@ -171,26 +163,3 @@ jobs:
           push: true
           tags: ${{ steps.prep.outputs.tags }}
 
-      - name: Send email notification
-        if: always()
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: ${{ secrets.EMAIL_SMTP_SERVER }}
-          server_port: ${{ secrets.EMAIL_SMTP_PORT }}
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: '${{ inputs.site_name }} deployment ${{ job.status }}'
-          to: me@anthonyrussano.com
-          from: ${{ secrets.EMAIL_USERNAME }}
-          html_body: |
-            <!DOCTYPE html>
-            <html>
-            <body>
-            <h2>${{ inputs.site_name }} Build Report</h2>
-            <p><strong>Status:</strong> ${{ job.status }}</p>
-            <p><strong>Triggered by:</strong> ${{ github.event_name }}</p>
-            <p><strong>Branch:</strong> ${{ github.ref_name }}</p>
-            <p><strong>Commit:</strong> <code>${{ github.sha }}</code></p>
-            <p><a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}">View workflow run</a></p>
-            </body>
-            </html>
