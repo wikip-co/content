@@ -14,6 +14,13 @@ from typing import Any
 
 SKIP_DIRS = {".git", ".github", ".venv", "node_modules", "__pycache__"}
 DEFAULT_TAGS = ["Research"]
+SEARCH_FIELD_WEIGHTS = {
+    "title": 30.0,
+    "tags": 20.0,
+    "permalink": 20.0,
+    "path": 15.0,
+    "body": 15.0,
+}
 
 TOOL_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -30,6 +37,7 @@ class ArticleRecord:
     stem: str
     tags: list[str]
     permalink: str | None
+    body: str
 
     @property
     def route_key(self) -> str:
@@ -51,10 +59,10 @@ def slugify(text: str) -> str:
     return re.sub(r"-{2,}", "-", normalize(text).replace(" ", "-")).strip("-")
 
 
-def parse_frontmatter(path: Path) -> dict[str, Any]:
+def parse_markdown_article(path: Path) -> tuple[dict[str, Any], str]:
     text = path.read_text(encoding="utf-8")
     if not text.startswith("---\n"):
-        return {}
+        return {}, text
 
     lines = text.splitlines()
     end_index = None
@@ -63,7 +71,7 @@ def parse_frontmatter(path: Path) -> dict[str, Any]:
             end_index = index
             break
     if end_index is None:
-        return {}
+        return {}, text
 
     metadata: dict[str, Any] = {}
     current_key: str | None = None
@@ -86,7 +94,22 @@ def parse_frontmatter(path: Path) -> dict[str, Any]:
     for key, values in list_values.items():
         metadata[key] = values
 
+    body = "\n".join(lines[end_index + 1 :])
+    return metadata, body
+
+
+def parse_frontmatter(path: Path) -> dict[str, Any]:
+    metadata, _ = parse_markdown_article(path)
     return metadata
+
+
+def coerce_frontmatter_list(value: Any) -> list[str]:
+    if isinstance(value, list):
+        return [str(item).strip() for item in value if str(item).strip()]
+    if isinstance(value, str):
+        stripped = value.strip()
+        return [stripped] if stripped else []
+    return []
 
 
 def load_articles(repo_root: Path) -> list[ArticleRecord]:
@@ -94,14 +117,15 @@ def load_articles(repo_root: Path) -> list[ArticleRecord]:
     for path in sorted(repo_root.rglob("*.md")):
         if any(part in SKIP_DIRS for part in path.parts):
             continue
-        metadata = parse_frontmatter(path)
+        metadata, body = parse_markdown_article(path)
         articles.append(
             ArticleRecord(
                 path=str(path.relative_to(repo_root)),
                 title=str(metadata.get("title", path.stem)),
                 stem=path.stem,
-                tags=[tag for tag in metadata.get("tags", []) if tag],
+                tags=coerce_frontmatter_list(metadata.get("tags", [])),
                 permalink=metadata.get("permalink") or None,
+                body=body,
             )
         )
     return articles
@@ -210,6 +234,164 @@ def top_matches_extended(
                         "match_method": "alert_keyword",
                     }
                 )
+
+    matches.sort(key=lambda item: (-item["score"], item["path"].lower()))
+    return matches[:limit]
+
+
+def normalize_search_query(query: str) -> tuple[str, list[str]]:
+    query_norm = normalize(query)
+    if not query_norm:
+        raise ValueError("query must contain at least one letter or number")
+    return query_norm, query_norm.split()
+
+
+def build_search_fields(article: ArticleRecord) -> dict[str, str]:
+    return {
+        "title": normalize(article.title),
+        "tags": normalize(" ".join(article.tags)),
+        "permalink": normalize(article.permalink or ""),
+        "path": normalize(article.path),
+        "body": normalize(article.body),
+    }
+
+
+def matched_search_units(
+    field_text: str,
+    query_norm: str,
+    query_terms: list[str],
+    match_mode: str,
+) -> list[str]:
+    if not field_text:
+        return []
+    if match_mode == "phrase":
+        return [query_norm] if query_norm in field_text else []
+    return [term for term in query_terms if term in field_text]
+
+
+def search_article(
+    article: ArticleRecord,
+    query_norm: str,
+    query_terms: list[str],
+    match_mode: str,
+    fields: list[str],
+) -> dict[str, Any] | None:
+    normalized_fields = build_search_fields(article)
+    field_matches: dict[str, list[str]] = {}
+
+    for field in fields:
+        matches = matched_search_units(
+            normalized_fields[field],
+            query_norm,
+            query_terms,
+            match_mode,
+        )
+        if matches:
+            field_matches[field] = matches
+
+    if match_mode == "phrase":
+        if not field_matches:
+            return None
+        matched_terms = [query_norm]
+        unit_count = 1
+    else:
+        matched_term_set = {term for matches in field_matches.values() for term in matches}
+        if match_mode == "any":
+            if not matched_term_set:
+                return None
+        elif matched_term_set != set(query_terms):
+            return None
+        matched_terms = sorted(matched_term_set)
+        unit_count = len(query_terms)
+
+    score = 0.0
+    for field, matches in field_matches.items():
+        coverage = len(set(matches)) / unit_count
+        score += SEARCH_FIELD_WEIGHTS[field] * coverage
+
+    title_norm = normalized_fields["title"]
+    path_norm = normalized_fields["path"]
+    permalink_norm = normalized_fields["permalink"]
+    stem_norm = normalize(article.stem)
+    if query_norm == title_norm:
+        score += 30
+    elif query_norm == permalink_norm:
+        score += 25
+    elif query_norm == path_norm:
+        score += 20
+    elif query_norm == stem_norm:
+        score += 15
+    elif match_mode == "phrase" and query_norm in title_norm:
+        score += 10
+
+    return {
+        "path": article.path,
+        "title": article.title,
+        "tags": article.tags,
+        "permalink": article.permalink,
+        "route_key": article.route_key,
+        "score": round(min(score, 100.0), 2),
+        "matched_fields": list(field_matches.keys()),
+        "matched_terms": matched_terms,
+        "snippet": build_body_snippet(article.body, query_norm, query_terms, match_mode),
+        "match_method": "search",
+    }
+
+
+def build_body_snippet(
+    body: str,
+    query_norm: str,
+    query_terms: list[str],
+    match_mode: str,
+    window: int = 180,
+) -> str | None:
+    snippet_source = re.sub(r"\s+", " ", body).strip()
+    if not snippet_source:
+        return None
+
+    source_lower = snippet_source.lower()
+    needles = [query_norm] if match_mode == "phrase" else query_terms
+    locations = [
+        (source_lower.find(needle), needle)
+        for needle in needles
+        if source_lower.find(needle) >= 0
+    ]
+    if not locations:
+        return None
+
+    first_index, needle = min(locations, key=lambda item: item[0])
+    start = max(0, first_index - 60)
+    end = min(len(snippet_source), first_index + len(needle) + window)
+    snippet = snippet_source[start:end].strip()
+    if start > 0:
+        snippet = f"...{snippet}"
+    if end < len(snippet_source):
+        snippet = f"{snippet}..."
+    return snippet
+
+
+def search_articles(
+    articles: list[ArticleRecord],
+    query: str,
+    *,
+    match_mode: str = "all",
+    fields: list[str] | None = None,
+    limit: int = 20,
+) -> list[dict[str, Any]]:
+    query_norm, query_terms = normalize_search_query(query)
+    active_fields = fields or list(SEARCH_FIELD_WEIGHTS.keys())
+
+    matches = []
+    for article in articles:
+        result = search_article(
+            article,
+            query_norm=query_norm,
+            query_terms=query_terms,
+            match_mode=match_mode,
+            fields=active_fields,
+        )
+        if result is not None:
+            matches.append(result)
 
     matches.sort(key=lambda item: (-item["score"], item["path"].lower()))
     return matches[:limit]
@@ -450,6 +632,23 @@ def match_title(args: argparse.Namespace) -> dict[str, Any]:
     }
 
 
+def search_content(args: argparse.Namespace) -> dict[str, Any]:
+    articles = load_articles(REPO_ROOT)
+    fields = args.fields or list(SEARCH_FIELD_WEIGHTS.keys())
+    return {
+        "query": args.query,
+        "match": args.match,
+        "fields": fields,
+        "matches": search_articles(
+            articles,
+            args.query,
+            match_mode=args.match,
+            fields=fields,
+            limit=args.limit,
+        ),
+    }
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Agent orchestration helpers for the content repository."
@@ -459,6 +658,24 @@ def build_parser() -> argparse.ArgumentParser:
     match_parser = subparsers.add_parser("match", help="Find likely existing article matches for a title.")
     match_parser.add_argument("title", help="Title or topic to match against the content repo.")
     match_parser.add_argument("--limit", type=int, default=5, help="Maximum matches to return.")
+
+    search_parser = subparsers.add_parser("search", help="Search local markdown articles by content and metadata.")
+    search_parser.add_argument("query", help="Search query to run against the content repo.")
+    search_parser.add_argument(
+        "--match",
+        choices=["any", "all", "phrase"],
+        default="all",
+        help='Match mode: "all" requires every query token somewhere in the article, "any" allows partial hits, "phrase" looks for the full normalized phrase.',
+    )
+    search_parser.add_argument(
+        "--field",
+        dest="fields",
+        action="append",
+        choices=sorted(SEARCH_FIELD_WEIGHTS.keys()),
+        default=[],
+        help="Restrict search to one or more fields. Repeat to search multiple fields.",
+    )
+    search_parser.add_argument("--limit", type=int, default=20, help="Maximum matches to return.")
 
     queue_parser = subparsers.add_parser("queue", help="Build a cron-friendly candidate queue from Gmail Reader.")
     queue_parser.add_argument("--topic", help="Optional topic filter for gmail-reader search.")
@@ -542,6 +759,8 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.command == "match":
             result = match_title(args)
+        elif args.command == "search":
+            result = search_content(args)
         elif args.command == "queue":
             result = queue_articles(args)
         elif args.command == "prepare":

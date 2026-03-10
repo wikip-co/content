@@ -22,6 +22,7 @@ Usage:
   ./agent-workflow backlog [wiki-automation backlog args...]
   ./agent-workflow queue [wiki-automation queue args...]
   ./agent-workflow match "<title or topic>" [wiki-automation match args...]
+  ./agent-workflow search "<query>" [wiki-automation search args...]
   ./agent-workflow prepare "<url>" [wiki-automation prepare args...]
   ./agent-workflow validate [validator args...]
   ./agent-workflow help
@@ -50,6 +51,12 @@ What each command does:
   match
     Score likely existing article matches for a title or topic.
 
+  search
+    Search local markdown content across title, tags, permalink, path, and body.
+    Defaults:
+      --match all
+      --limit 20
+
   prepare
     Scrape a URL, match it to the repo, and optionally create a new article stub.
     Marks the article as processed in the gmail-reader DB after a successful scrape.
@@ -65,6 +72,7 @@ Examples:
   ./agent-workflow backlog --open-access --min-score 15 --limit 50
   ./agent-workflow queue --topic "health nutrition"
   ./agent-workflow match "postpartum hypertension"
+  ./agent-workflow search "postpartum hypertension" --match phrase
   ./agent-workflow prepare "https://example.org/article" --category "Child Development/Infant/Nutrition" --create-new --tag Nutrition
   ./agent-workflow prepare "https://example.org/article" --match-existing --alert-name "infant nutrition"
   ./agent-workflow validate
@@ -123,6 +131,16 @@ run_match() {
   uv run --directory "$WIKI_AUTOMATION_DIR" wiki-automation match "$@"
 }
 
+run_search() {
+  require_command uv
+  if (($# < 1)); then
+    printf 'search requires a query\n' >&2
+    exit 1
+  fi
+
+  uv run --directory "$WIKI_AUTOMATION_DIR" wiki-automation search "$@"
+}
+
 run_backlog() {
   require_command uv
 
@@ -159,6 +177,9 @@ main() {
       ;;
     match)
       run_match "$@"
+      ;;
+    search)
+      run_search "$@"
       ;;
     prepare)
       run_prepare "$@"

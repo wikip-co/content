@@ -2,8 +2,9 @@
 
 Cron-friendly helper CLI for the content repo's agent workflow.
 
-It does three things:
+It does four things:
 
+- search local markdown content by title, tags, permalink, path, and body
 - build a structured queue from `gmail-reader`
 - match scraped or proposed titles against existing markdown articles
 - prepare a scrape packet and optionally create a new article stub with optional Cloudinary upload
@@ -29,6 +30,14 @@ Find likely existing article matches for a topic:
 
 ```bash
 uv run wiki-automation match "postpartum hypertension"
+```
+
+Search local markdown content before creating or editing an article:
+
+```bash
+uv run wiki-automation search "postpartum hypertension"
+uv run wiki-automation search "postpartum hypertension" --match phrase
+uv run wiki-automation search "hypertension" --field title --field tags
 ```
 
 Build a daily queue from recent Gmail alerts:
@@ -67,6 +76,7 @@ uv run wiki-automation prepare \
 
 The CLI always prints JSON:
 
+- `search` returns local markdown matches with matched fields, matched terms, and a snippet
 - `queue` writes a queue packet with gmail-reader results plus content match candidates
 - `prepare` writes a scrape packet and, when requested, a new article stub in the repo
 - `match` returns scored existing article candidates
@@ -89,6 +99,7 @@ Other common manual commands:
 
 ```bash
 ./agent-workflow match "postpartum hypertension"
+./agent-workflow search "postpartum hypertension" --match phrase
 ./agent-workflow prepare "https://example.org/article" --category "Child Development/Infant/Nutrition" --create-new --tag Nutrition
 ./agent-workflow validate
 ```

@@ -36,11 +36,13 @@ To add or edit blog posts:
 - `web-scraper`: Article scraper that returns JSON plus a repo-compatible footnote
 - `gmail-reader`: Google Scholar alert ingestion CLI backed by Gmail and SQLite
 - `wiki-automation`: Queue builder and scrape-to-article orchestration helper
+  Includes local markdown `search` and title/topic `match` commands for agents.
 
 ## Manual Launcher
 
 - `./agent-workflow queue`: Build a fresh intake packet on demand
 - `./agent-workflow match "<topic>"`: Find likely existing articles
+- `./agent-workflow search "<query>"`: Search local markdown content before creating or editing an article
 - `./agent-workflow prepare "<url>" ...`: Scrape a URL and optionally create a stub article
 - `./agent-workflow validate`: Run the content validator
 
