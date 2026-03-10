@@ -1,5 +1,6 @@
 ---
 title: Amazon Redshift (Database)
+permalink: amazon-redshift-database/
 image: aws
 tags:
 - AWS

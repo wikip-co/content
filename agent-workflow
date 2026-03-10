@@ -1,0 +1,152 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$SCRIPT_DIR"
+WIKI_AUTOMATION_DIR="$REPO_ROOT/.github/agent-tools/wiki-automation"
+VALIDATOR="$REPO_ROOT/.github/scripts/validate_content.py"
+DEFAULT_OUTPUT_DIR="$WIKI_AUTOMATION_DIR/out"
+
+require_command() {
+  local cmd="$1"
+  if ! command -v "$cmd" >/dev/null 2>&1; then
+    printf 'Missing required command: %s\n' "$cmd" >&2
+    exit 1
+  fi
+}
+
+usage() {
+  cat <<'EOF'
+Usage:
+  ./agent-workflow queue [wiki-automation queue args...]
+  ./agent-workflow match "<title or topic>" [wiki-automation match args...]
+  ./agent-workflow prepare "<url>" [wiki-automation prepare args...]
+  ./agent-workflow validate [validator args...]
+  ./agent-workflow help
+
+What each command does:
+  queue
+    Manually pull recent Gmail Reader candidates and write a queue packet.
+    Defaults:
+      --gmail-query 'label:inbox newer_than:1d'
+      --days-back 1
+      --max-messages 25
+      --max-results 10
+      --output-dir ./.github/agent-tools/wiki-automation/out
+
+  match
+    Score likely existing article matches for a title or topic.
+
+  prepare
+    Scrape a URL, match it to the repo, and optionally create a new article stub.
+
+  validate
+    Run the content validator directly against this repo.
+
+Examples:
+  ./agent-workflow queue --topic "health nutrition"
+  ./agent-workflow match "postpartum hypertension"
+  ./agent-workflow prepare "https://example.org/article" --category "Child Development/Infant/Nutrition" --create-new --tag Nutrition
+  ./agent-workflow validate
+EOF
+}
+
+run_queue() {
+  require_command uv
+
+  local gmail_query="label:inbox newer_than:1d"
+  local days_back="1"
+  local max_messages="25"
+  local max_results="10"
+  local output_dir="$DEFAULT_OUTPUT_DIR"
+
+  local passthrough=()
+  while (($#)); do
+    case "$1" in
+      --gmail-query|--days-back|--max-messages|--max-results|--output-dir)
+        if (($# < 2)); then
+          printf 'Missing value for %s\n' "$1" >&2
+          exit 1
+        fi
+        case "$1" in
+          --gmail-query) gmail_query="$2" ;;
+          --days-back) days_back="$2" ;;
+          --max-messages) max_messages="$2" ;;
+          --max-results) max_results="$2" ;;
+          --output-dir) output_dir="$2" ;;
+        esac
+        shift 2
+        ;;
+      *)
+        passthrough+=("$1")
+        shift
+        ;;
+    esac
+  done
+
+  uv run --directory "$WIKI_AUTOMATION_DIR" wiki-automation queue \
+    --gmail-query "$gmail_query" \
+    --days-back "$days_back" \
+    --max-messages "$max_messages" \
+    --max-results "$max_results" \
+    --output-dir "$output_dir" \
+    "${passthrough[@]}"
+}
+
+run_match() {
+  require_command uv
+  if (($# < 1)); then
+    printf 'match requires a title or topic\n' >&2
+    exit 1
+  fi
+
+  uv run --directory "$WIKI_AUTOMATION_DIR" wiki-automation match "$@"
+}
+
+run_prepare() {
+  require_command uv
+  if (($# < 1)); then
+    printf 'prepare requires a URL\n' >&2
+    exit 1
+  fi
+
+  uv run --directory "$WIKI_AUTOMATION_DIR" wiki-automation prepare "$@"
+}
+
+run_validate() {
+  require_command python3
+  python3 "$VALIDATOR" --repo-root "$REPO_ROOT" "$@"
+}
+
+main() {
+  local command="${1:-help}"
+  if (($# > 0)); then
+    shift
+  fi
+
+  case "$command" in
+    queue)
+      run_queue "$@"
+      ;;
+    match)
+      run_match "$@"
+      ;;
+    prepare)
+      run_prepare "$@"
+      ;;
+    validate)
+      run_validate "$@"
+      ;;
+    help|-h|--help)
+      usage
+      ;;
+    *)
+      printf 'Unknown command: %s\n\n' "$command" >&2
+      usage >&2
+      exit 1
+      ;;
+  esac
+}
+
+main "$@"

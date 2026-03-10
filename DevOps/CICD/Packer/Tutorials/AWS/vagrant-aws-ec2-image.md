@@ -1,7 +1,7 @@
 ---
 title: Create a Vagrant Box from an AMI with Packer Post-Processors
 image: packer
-tage:
+tags:
 - AWS
 - Packer
 - Vagrant

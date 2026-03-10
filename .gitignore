@@ -2,3 +2,5 @@
 __pycache__/
 *.pyc
 .env
+.github/agent-tools/gmail-reader/data/
+.github/agent-tools/wiki-automation/out/

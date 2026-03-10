@@ -1,7 +1,7 @@
 [project]
-name = "scrappyling"
+name = "web-scraper"
 version = "0.1.0"
-description = "Add your description here"
+description = "Agent-friendly research article scraper with structured JSON output"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

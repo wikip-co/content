@@ -12,6 +12,7 @@ Small CLI tool for agent-friendly Cloudinary image operations. All commands retu
 ## Setup
 
 The CLI reads credentials from a local `.env` file automatically, or from exported shell variables.
+It looks in the current working directory first and then in the tool directory.
 
 Required variables:
 
@@ -142,6 +143,7 @@ Operational notes for agents:
 - `--resource-type` defaults to `image`.
 - The CLI reads a local `.env` file automatically if present.
 - The default image delivery URL format is `https://res.cloudinary.com/<cloud_name>/image/upload/w_200,f_auto/<public_id>`.
+- For new wiki articles, prefer setting frontmatter `image:` explicitly even if the filename-based theme fallback would work.
 
 Example upload result:
 

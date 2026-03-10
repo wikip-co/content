@@ -1,5 +1,6 @@
 ---
 title: Hypertension
+permalink: parenting-postpartum-hypertension/
 tags:
 - Cardiovascular Health
 - Heart Health

@@ -1,5 +1,6 @@
 ---
 title: Real Estate Project Reasearch Topics
+permalink: real-estate-project-research/
 image: gold-book
 tags:
 - Realty

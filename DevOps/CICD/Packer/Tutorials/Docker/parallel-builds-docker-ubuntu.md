@@ -1,7 +1,7 @@
 ---
 title: How to Build Multiple Images in Parallel with Packer
 image: packer
-tage:
+tags:
 - Docker
 - Parallel Builds
 ---

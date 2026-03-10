@@ -1,5 +1,6 @@
 ---
 title: Amazon Redshift
+permalink: amazon-redshift-analytics/
 tags:
 - AWS
 ---

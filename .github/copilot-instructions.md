@@ -29,6 +29,7 @@ Place new articles in the most specific matching subdirectory. Create new subdir
 - Use **lowercase kebab-case** for all file names: `turmeric.md`, `gut-microbiome.md`, `early-modern-europe.md`
 - Use only letters, numbers, and hyphens — no spaces, underscores, or special characters
 - File names should reflect the article title: `what-is-cesarean-birth.md` → title `What is Cesarean Birth?`
+- Legacy files may not follow this convention. Do not bulk-rename existing articles unless explicitly asked.
 
 ## Frontmatter (Required)
 
@@ -50,7 +51,8 @@ tags:
 |-------|----------|-------------|
 | `title` | **Yes** | Title-case display name shown on the site |
 | `tags` | **Yes** | List of relevant topic tags (one per line with `- ` prefix). Minimum 1 tag. |
-| `image` | No | Image key used by the theme. Omit the file extension when referencing theme images (e.g., `image: turmeric`). Use the filename with extension for custom uploads (e.g., `image: funding.jpg`). |
+| `image` | No | Image key used by the theme. Omit the file extension when referencing theme images (e.g., `image: turmeric`). Use the filename with extension for custom uploads (e.g., `image: funding.jpg`). For new agent-created articles, set this explicitly. |
+| `permalink` | No | Use only when needed to avoid a slug collision with an existing article while preserving the site's global permalink format. |
 | `encrypted` | No | Set to `true` to encrypt article content with the site password. |
 
 **Tags must be meaningful and specific.** Use existing tags from similar articles for consistency (e.g., `Antioxidant`, `Antiinflammatory`, `Antimicrobial`, `Brain Health`, `Gut Health`, `AWS`, `Docker`).
@@ -232,6 +234,14 @@ Definition or meaning of the term.
 ## Citation & Reference Format
 
 All factual claims **must** be cited with numbered footnotes. Place `[^N]` inline immediately after the claim and before any trailing punctuation (e.g., `...shown to reduce inflammation.[^1]`).
+
+## Validation
+
+Validate the repository before publishing automation-driven changes:
+
+```bash
+python3 .github/scripts/validate_content.py --repo-root .
+```
 
 ### Full Academic Reference (preferred for scientific articles)
 

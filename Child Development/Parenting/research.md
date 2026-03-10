@@ -1,5 +1,6 @@
 ---
 title: Child Development Research
+permalink: child-development-parenting-research/
 image: books
 tags:
 - Health

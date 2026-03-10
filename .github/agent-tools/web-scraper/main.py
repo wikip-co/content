@@ -1,28 +1,20 @@
 #!/usr/bin/env python3
-"""
-research_scrape.py
-Scrapes a research article URL using Scrapling's StealthyFetcher (handles JS/bot
-protection), cleans the HTML with BeautifulSoup, then converts to rich markdown
-via markitdown — preserving headings, tables, lists, and all body content.
+from __future__ import annotations
 
-Usage:
-    python main.py <URL> [output_file.md]
-"""
-
+import argparse
+import json
+import os
 import sys
 import tempfile
-import os
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 from bs4 import BeautifulSoup
 from markitdown import MarkItDown
 from scrapling.fetchers import StealthyFetcher
 
-# ── HTML cleaning ──────────────────────────────────────────────────────────────
-
 CONTENT_SELECTORS = [
-    ".html-body",        # MDPI article body
+    ".html-body",
     "article",
     ".article-content",
     ".article-body",
@@ -35,68 +27,120 @@ CONTENT_SELECTORS = [
 ]
 
 UNWANTED_SELECTORS = [
-    "nav", "header", "footer", "script", "style",
-    ".sidebar", ".comments", ".social-share", ".related-posts",
-    ".advertisement", ".navigation", ".menu", ".widget",
-    ".header", ".footer", ".author-bio", ".newsletter-signup",
-    ".subscription-box", ".article-notes",  # MDPI citation boxes
-    "[class*='cookie']", "[class*='banner']", "[class*='popup']",
-    "[id*='cookie']", "[id*='banner']", "[id*='popup']",
-    "figure > figcaption",  # keep figures but can strip captions if noisy
+    "nav",
+    "header",
+    "footer",
+    "script",
+    "style",
+    ".sidebar",
+    ".comments",
+    ".social-share",
+    ".related-posts",
+    ".advertisement",
+    ".navigation",
+    ".menu",
+    ".widget",
+    ".header",
+    ".footer",
+    ".author-bio",
+    ".newsletter-signup",
+    ".subscription-box",
+    ".article-notes",
+    "[class*='cookie']",
+    "[class*='banner']",
+    "[class*='popup']",
+    "[id*='cookie']",
+    "[id*='banner']",
+    "[id*='popup']",
+    "figure > figcaption",
 ]
 
 
 def clean_html(raw_html: str) -> str:
-    """Extract main content and strip nav/footer/ads."""
     soup = BeautifulSoup(raw_html, "html.parser")
+    for selector in UNWANTED_SELECTORS:
+        for element in soup.select(selector):
+            element.decompose()
 
-    # Remove unwanted elements globally first
-    for sel in UNWANTED_SELECTORS:
-        for el in soup.select(sel):
-            el.decompose()
-
-    # Try to narrow to main content area
-    main = None
-    for sel in CONTENT_SELECTORS:
-        main = soup.select_one(sel)
+    for selector in CONTENT_SELECTORS:
+        main = soup.select_one(selector)
         if main:
-            break
-
-    return str(main) if main else str(soup)
+            return str(main)
+    return str(soup)
 
 
 def html_to_markdown(html: str) -> str:
-    """Convert an HTML string to markdown via a temp file."""
-    md = MarkItDown()
-    with tempfile.NamedTemporaryFile(suffix=".html", mode="w",
-                                     encoding="utf-8", delete=False) as f:
-        f.write(html)
-        tmp = f.name
+    converter = MarkItDown()
+    with tempfile.NamedTemporaryFile(
+        suffix=".html",
+        mode="w",
+        encoding="utf-8",
+        delete=False,
+    ) as handle:
+        handle.write(html)
+        tmp_path = handle.name
+
     try:
-        result = md.convert(tmp)
+        result = converter.convert(tmp_path)
         return result.text_content.strip()
     finally:
-        os.unlink(tmp)
+        os.unlink(tmp_path)
 
 
-# ── Scraping ───────────────────────────────────────────────────────────────────
+def citation_url(data: dict[str, str]) -> str:
+    doi = data["doi"].strip()
+    if doi:
+        return doi if doi.startswith("http") else f"https://doi.org/{doi}"
+    return data["url"]
 
-def scrape_article(url: str) -> dict:
-    print(f"[*] Fetching: {url}")
 
+def footnote_markdown(data: dict[str, str]) -> str:
+    title_link = citation_url(data)
+    publication_name = data["journal"] or "Source"
+    publication_line = f"**Publication:** [{publication_name}]({data['url']})<br>"
+    return "\n".join(
+        [
+            f"[^1]: **Title:** [{data['title']}]({title_link})<br>",
+            publication_line,
+            f"**Date:** {data['pub_date'] or 'Unknown'}<br>",
+            f"**Author(s):** {data['authors'] or 'Unknown'}<br>",
+            f"**Source URL:** [{data['url']}]({data['url']})",
+        ]
+    )
+
+
+def markdown_packet(data: dict[str, str]) -> str:
+    abstract_section = f"\n## Abstract\n\n{data['abstract']}\n" if data["abstract"] else ""
+    keywords_section = f"\n## Keywords\n\n{data['keywords']}\n" if data["keywords"] else ""
+    return (
+        f"# {data['title']}\n\n"
+        f"> Scraped: {data['scraped_at']}\n"
+        f"> Source: {data['url']}\n\n"
+        f"## Metadata\n\n"
+        f"- **Authors:** {data['authors'] or 'Unknown'}\n"
+        f"- **Journal:** {data['journal'] or 'N/A'}\n"
+        f"- **Published:** {data['pub_date'] or 'Unknown'}\n"
+        f"- **DOI:** {data['doi'] or 'N/A'}\n"
+        f"{keywords_section}"
+        f"{abstract_section}"
+        f"\n## Extracted Content\n\n"
+        f"{data['body_markdown']}\n\n"
+        f"## Suggested Footnote\n\n"
+        f"{data['footnote_markdown']}\n"
+    )
+
+
+def scrape_article(url: str) -> dict[str, str]:
     page = StealthyFetcher.fetch(
         url,
         headless=True,
         network_idle=True,
         disable_resources=False,
     )
-
     if not page:
-        raise RuntimeError("Failed to fetch — got empty response.")
+        raise RuntimeError("Failed to fetch: empty response")
 
-    raw_html = page.html_content  # full page HTML string from scrapling
-
-    # ── Metadata via reliable meta tags ───────────────────────────────────────
+    raw_html = page.html_content
     title = (
         page.css('meta[name="citation_title"]::attr(content)').get()
         or page.css("h1::text").get()
@@ -106,13 +150,13 @@ def scrape_article(url: str) -> dict:
 
     author_tags = page.css('meta[name="citation_author"]::attr(content)').getall()
     if author_tags:
-        authors = ", ".join(a.strip() for a in author_tags if a.strip())
+        authors = ", ".join(author.strip() for author in author_tags if author.strip())
     else:
-        author_els = (
+        author_candidates = (
             page.css('[class*="author"] [class*="name"]::text').getall()
             or page.css('[class*="author"]::text').getall()
         )
-        authors = ", ".join(a.strip() for a in author_els if a.strip()) or "Unknown Authors"
+        authors = ", ".join(author.strip() for author in author_candidates if author.strip())
 
     doi = (
         page.css('meta[name="citation_doi"]::attr(content)').get()
@@ -127,126 +171,89 @@ def scrape_article(url: str) -> dict:
     pub_date = (
         page.css('meta[name="citation_publication_date"]::attr(content)').get()
         or page.css('meta[name="citation_date"]::attr(content)').get()
-        or datetime.now().strftime("%Y")
+        or ""
     )
-    keywords_tags = page.css('meta[name="citation_keywords"]::attr(content)').getall()
-    keywords = ", ".join(k.strip() for k in keywords_tags if k.strip())
-
+    keyword_tags = page.css('meta[name="citation_keywords"]::attr(content)').getall()
+    keywords = ", ".join(keyword.strip() for keyword in keyword_tags if keyword.strip())
     abstract = (
         page.css('meta[name="citation_abstract"]::attr(content)').get()
         or page.css('meta[name="description"]::attr(content)').get()
         or ""
     )
-    # abstract meta tags sometimes have HTML entities / tags inside — clean them
     if abstract:
         abstract = BeautifulSoup(abstract, "html.parser").get_text(" ", strip=True)
 
-    # ── Body: clean HTML → markitdown → rich markdown ─────────────────────────
-    cleaned = clean_html(raw_html)
-    body_md = html_to_markdown(cleaned)
-
-    return {
+    body_markdown = html_to_markdown(clean_html(raw_html))
+    data = {
         "url": url,
         "title": title.strip(),
-        "authors": authors,
-        "abstract": abstract,
-        "body": body_md,
+        "authors": authors.strip(),
+        "abstract": abstract.strip(),
+        "body_markdown": body_markdown,
         "doi": doi.strip(),
         "journal": journal.strip(),
         "pub_date": pub_date.strip(),
-        "keywords": keywords,
+        "keywords": keywords.strip(),
+        "scraped_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%SZ"),
     }
+    data["reference_url"] = citation_url(data)
+    data["footnote_markdown"] = footnote_markdown(data)
+    return data
 
 
-# ── Markdown output ────────────────────────────────────────────────────────────
-
-def build_markdown(data: dict) -> str:
-    doi_line = f"DOI: {data['doi']}" if data["doi"] else f"URL: {data['url']}"
-    journal_line = f"Journal: {data['journal']}" if data["journal"] else ""
-
-    citation_parts = [
-        data["authors"],
-        f'"{data["title"]}"',
-        journal_line,
-        data["pub_date"],
-        doi_line,
-    ]
-    citation = ". ".join(p for p in citation_parts if p)
-
-    keywords_section = f"\n## Keywords\n{data['keywords']}" if data["keywords"] else ""
-    abstract_section = f"\n## Abstract\n{data['abstract']}" if data["abstract"] else ""
-
-    return f"""# {data['title']}
-
-> Scraped: {datetime.now().strftime("%Y-%m-%d %H:%M")}
-> Source: {data['url']}
-
----
-
-## Metadata
-- **Authors:** {data['authors']}
-- **Journal:** {data['journal'] or 'N/A'}
-- **Published:** {data['pub_date']}
-- **DOI:** {data['doi'] or 'N/A'}
-{keywords_section}{abstract_section}
-
----
-
-## Full Content
-
-{data['body']}
-
----
-
-## Citation
-
-{citation}
-
----
-
-## Copilot Integration Instructions
-
-Use the content above to update the relevant article in this repository.
-
-- Incorporate all findings from the **Abstract** and **Full Content** sections
-- Every new sentence or bullet point added must include an inline reference: `[Author et al., {data['pub_date']}]`
-- Append the citation below to the `## References` section of the target article
-- Add any new relevant keywords to the `keywords` section of the target article
-- Do not remove or modify any existing content, citations, or keywords
-
-**Citation to append:**
-> {citation}
-"""
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Scrape an article URL and return structured markdown-ready data."
+    )
+    parser.add_argument("url", help="Article URL to scrape.")
+    parser.add_argument(
+        "legacy_output",
+        nargs="?",
+        help="Legacy optional markdown output path for compatibility.",
+    )
+    parser.add_argument(
+        "--output",
+        help="Optional markdown output path.",
+    )
+    parser.add_argument(
+        "--format",
+        choices=["json", "markdown"],
+        default="json",
+        help="Output format. JSON is the default agent contract.",
+    )
+    return parser
 
 
-# ── Entry point ────────────────────────────────────────────────────────────────
-
-def main():
-    if len(sys.argv) < 2:
-        print("Usage: python main.py <URL> [output.md]")
-        sys.exit(1)
-
-    url = sys.argv[1]
-    output_path = sys.argv[2] if len(sys.argv) > 2 else "article_extract.md"
+def main(argv: list[str] | None = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    output_path = args.output or args.legacy_output
 
     try:
-        data = scrape_article(url)
-        markdown = build_markdown(data)
+        data = scrape_article(args.url)
+        packet = markdown_packet(data)
 
-        Path(output_path).write_text(markdown, encoding="utf-8")
-        print(f"[✓] Saved to: {output_path}")
-        print(f"[✓] Title: {data['title']}")
-        print(f"[✓] Authors: {data['authors']}")
-        print(f"[✓] Journal: {data['journal']}")
-        print(f"[✓] DOI: {data['doi']}")
-        print(f"[✓] Keywords: {data['keywords'][:80]}{'...' if len(data['keywords']) > 80 else ''}")
-        print(f"[✓] Abstract: {len(data['abstract'])} chars")
-        print(f"[✓] Body: {len(data['body'])} chars")
+        if output_path:
+            destination = Path(output_path).expanduser().resolve()
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_text(packet, encoding="utf-8")
+            data["markdown_output_path"] = str(destination)
+        else:
+            data["markdown_output_path"] = None
 
-    except Exception as e:
-        print(f"[✗] Error: {e}")
-        sys.exit(1)
+        if args.format == "markdown":
+            print(packet)
+        else:
+            print(json.dumps({"ok": True, "result": data}, indent=2))
+    except Exception as exc:
+        if args.format == "markdown":
+            print(f"Error: {exc}", file=sys.stderr)
+        else:
+            print(json.dumps({"ok": False, "error": str(exc)}), file=sys.stderr)
+        return 1
+
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

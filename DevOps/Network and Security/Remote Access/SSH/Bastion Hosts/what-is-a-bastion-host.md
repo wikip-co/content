@@ -1,8 +1,10 @@
 ---
 title: What is a Bastion Host?
 image: ssh
-tage:
--
+tags:
+- SSH
+- Network Security
+- Bastion Hosts
 ---
 ## Description
 

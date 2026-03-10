@@ -1,7 +1,7 @@
 ---
 title: Using Packer to Provision an Ubuntu AMI with Redis Installed
 image: packer
-tage:
+tags:
 - AWS
 - Packer
 ---

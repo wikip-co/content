@@ -1,5 +1,6 @@
 ---
 title: AWS Glue (Database)
+permalink: aws-glue-database/
 image: aws
 tags:
 - AWS

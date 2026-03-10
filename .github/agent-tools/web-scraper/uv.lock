@@ -787,23 +787,6 @@ fetchers = [
 ]
 
 [[package]]
-name = "scrappyling"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "beautifulsoup4" },
-    { name = "markitdown" },
-    { name = "scrapling", extra = ["fetchers"] },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "beautifulsoup4", specifier = ">=4.12.3" },
-    { name = "markitdown", specifier = ">=0.0.1a3" },
-    { name = "scrapling", extras = ["fetchers"], specifier = ">=0.4.1" },
-]
-
-[[package]]
 name = "six"
 version = "1.17.0"
 source = { registry = "https://pypi.org/simple" }
@@ -867,4 +850,21 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/f1/91/186665abf1a6d16c0c5ea1f0e681d9c852b45c3a750aa8657f8f956690a8/w3lib-2.4.0.tar.gz", hash = "sha256:e233ad21649b69d0e047a10f30181ae9677524a29f6f71f6f3c758dc0c8d2648", size = 48302, upload-time = "2026-01-29T07:05:07.504Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/2e/f5/ce3ab627e0cb51591c9e3dc4b9b173f15d7f2bec1c0010420b15fc442940/w3lib-2.4.0-py3-none-any.whl", hash = "sha256:260b5a22aeb86ae73213857f69ed20829a45150f8d5b12050b1f02ada414db79", size = 21603, upload-time = "2026-01-29T07:05:05.841Z" },
+]
+
+[[package]]
+name = "web-scraper"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "beautifulsoup4" },
+    { name = "markitdown" },
+    { name = "scrapling", extra = ["fetchers"] },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "beautifulsoup4", specifier = ">=4.12.3" },
+    { name = "markitdown", specifier = ">=0.0.1a3" },
+    { name = "scrapling", extras = ["fetchers"], specifier = ">=0.4.1" },
 ]

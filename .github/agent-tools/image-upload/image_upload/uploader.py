@@ -19,16 +19,21 @@ REQUIRED_ENV_VARS = (
 
 
 def load_dotenv() -> None:
-    env_path = Path(".env").resolve()
-    if not env_path.is_file():
-        return
+    candidate_paths = [
+        Path.cwd() / ".env",
+        Path(__file__).resolve().parent.parent / ".env",
+    ]
 
-    for raw_line in env_path.read_text(encoding="utf-8").splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#") or "=" not in line:
+    for env_path in candidate_paths:
+        if not env_path.is_file():
             continue
-        key, value = line.split("=", 1)
-        os.environ.setdefault(key.strip(), value.strip())
+        for raw_line in env_path.read_text(encoding="utf-8").splitlines():
+            line = raw_line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            os.environ.setdefault(key.strip(), value.strip())
+        return
 
 
 def configure_cloudinary() -> None:

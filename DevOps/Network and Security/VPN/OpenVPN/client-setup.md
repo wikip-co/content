@@ -1,5 +1,6 @@
 ---
 title: OpenVPN Client Setup
+permalink: openvpn-client-setup/
 image: openvpn
 tags:
 -

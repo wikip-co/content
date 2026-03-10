@@ -1,5 +1,10 @@
 ---
 title: Packer Post Processors
+image: packer
+tags:
+- Docker
+- Packer
+- Post Processing
 ---
 ```
 packer {

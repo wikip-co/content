@@ -1,6 +1,10 @@
 ---
 title: Setting up an IPFS Server on a Raspberry Pi
 image: ipfs
+tags:
+- IPFS
+- Raspberry Pi
+- File Servers
 ---
 # Description
 

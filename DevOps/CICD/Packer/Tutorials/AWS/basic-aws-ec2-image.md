@@ -1,7 +1,7 @@
 ---
 title: Build an Image for an AWS EC2 Instance with Packer
 image: packer
-tage:
+tags:
 - Packer
 - Ubuntu
 - EC2

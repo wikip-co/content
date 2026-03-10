@@ -1,5 +1,6 @@
 ---
 title: AWS Glue
+permalink: aws-glue-analytics/
 image: aws
 tags:
 - AWS
