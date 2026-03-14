@@ -30,6 +30,10 @@ tags:
 - Mitochondrial Health
 - Immune Modulation
 - Lung Cancer
+- Intervertebral Disc Degeneration
+- Spine Health
+- Low Back Pain
+- Nucleus Pulposus
 ---
 **Resveratrol** is a type of natural phenol produced by several plants. 
 
@@ -197,6 +201,21 @@ Resveratrol treatment has been shown to preserve the integrity of the blood-brai
 
 Resveratrol administration promotes complete protection against memory loss.[^5]
 
+### Spine and Joint Health
+
+#### Intervertebral Disc Degeneration
+
+Resveratrol has demonstrated considerable potential in mitigating intervertebral disc degeneration (IVDD), a leading cause of low back pain.[^17]
+
+Resveratrol exerts protective effects on nucleus pulposus (NP) cells through multiple mechanisms:[^17]
+
+- Alleviates mechanical and oxidative stress-induced NP cell senescence by inhibiting pathways such as NF-κB.
+- Suppresses inflammation and high glucose-triggered apoptosis via modulating ERK1/2 and PI3K/Akt pathways.
+- Enhances cytoprotective autophagy through activating pathways like Nrf2/ARE to clear damaged cellular components.
+- Maintains the synthesis-degradation balance of the extracellular matrix (ECM) by regulating inflammatory cytokine expression, improving the disc microenvironment.
+
+Evidence suggests that resveratrol acts synergistically on multiple targets and pathways to intervene in key pathological processes of IVDD.[^17]
+
 ## Synergistic Effects
 
 ### Nicotinamide adenine dinucleotide (NAD+)
@@ -254,3 +273,10 @@ The NAD+ precursors Nicotinic acid and Nicotinamide, when administered with Resv
 **Date:** 2025/08/29<br>
 **Study Type:** Systematic Review and Meta-Analysis (23 in vivo studies, 425 animals)<br>
 **Author(s):** Xiao, Xiang, Wu, Xuanyu, Li, Wenyuan, You, Fengming, Guo, Jing
+
+[^17]: **Title:** [Research progress of resveratrol against intervertebral disc degeneration](https://doi.org/10.12200/j.issn.1003-0034.20240841)<br>
+**Publication:** [Zhongguo gu shang = China journal of orthopaedics and traumatology](https://pubmed.ncbi.nlm.nih.gov/41808512/)<br>
+**Date:** February 25, 2026<br>
+**Study Type:** Review<br>
+**Author(s):** Mengting Cheng, Moran Suo, Kaizhong Wang, Zhonghai Li<br>
+**Source:** [PubMed](https://pubmed.ncbi.nlm.nih.gov/41808512/)
