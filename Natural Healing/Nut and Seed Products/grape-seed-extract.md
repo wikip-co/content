@@ -49,6 +49,14 @@ Grape seed extract significantly reduces reactive species (RS) levels in the pre
 
 ### Anti-Obesity
 
+In a 2026 systematic review and meta-analysis of 32 randomized controlled trials in overweight and obese populations, grape-derived interventions were among the polyphenol-rich food matrices associated with improved gut microbiota profiles and lower inflammatory burden.[^4]
+
+The review found that whole polyphenol-rich foods outperformed purified extracts for lowering IL-6 and C-reactive protein (CRP), which is relevant context for grape-based interventions even though the study did not isolate grape seed extract alone.[^4]
+
+### Anti-Inflammatory
+
+Broader human evidence on dietary polyphenols suggests they can reduce IL-6, raise IL-10, and promote beneficial gut bacteria such as Bifidobacterium spp. and Akkermansia muciniphila in overweight and obese populations, with stronger effects in shorter interventions and whole-food matrices.[^4]
+
 ### Neuroprotective
 
 Grape seed extract exerts neuroprotective effects by attenuating oxidative stress and neuroinflammatory responses in brain regions including the prefrontal cortex and hippocampus.[^3]
@@ -151,10 +159,10 @@ The hypothalamic-pituitary-adrenal (HPA) axis plays a central role in the physio
 **Institutions:** <br>
 **Copy:** [archive](https://ipfs.io/ipfs/), [archive-mirror](https://cloudflare-ipfs.com/ipfs/)
 
-[^4]: **Title:** []()<br>
-**Publication:** []()<br>
-**Date:** <br>
-**Study Type:** Animal Study, Commentary, Human Study: In Vitro - In Vivo - In Silico, Human: Case Report, Meta Analysis, Review<br>
-**Author(s):** <br>
-**Institutions:** <br>
-**Copy:** [archive](https://ipfs.io/ipfs/), [archive-mirror](https://cloudflare-ipfs.com/ipfs/)
+[^4]: **Title:** [Effects of Polyphenols on Gut Health and Inflammation in Overweight and Obese Populations: A Systematic Review and Meta-analysis of Dose, Duration, and Food Matrix](https://doi.org/10.1093/nutrit/nuaf255)<br>
+**Publication:** [Nutrition Reviews](https://academic.oup.com/nutritionreviews/advance-article/doi/10.1093/nutrit/nuaf255/8514447)<br>
+**Date:** March 11, 2026<br>
+**Study Type:** Systematic Review and Meta-analysis of Randomized Controlled Trials<br>
+**Author(s):** Qianqian Wang, Huimin Zou, Yu Zhang, Kai Huang, Xiao Guan, Suijun Wang, Sen Li<br>
+**Notes:** The review pooled multiple polyphenol interventions rather than grape seed extract specifically; grape-derived interventions were part of the broader evidence base and whole-food matrices showed stronger IL-6 and CRP reductions than purified extracts.<br>
+**Copy:** [Source](https://academic.oup.com/nutritionreviews/advance-article-abstract/doi/10.1093/nutrit/nuaf255/8514447)
