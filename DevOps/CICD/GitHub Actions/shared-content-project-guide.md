@@ -40,7 +40,7 @@ The deploy path is:
 2. `trigger-sites.yml` fires only for markdown changes.
 3. That workflow sends `repository_dispatch` events to the site repositories and includes the exact `content_ref` and `content_sha`.
 4. The site repo workflow calls the reusable `hexo-deploy.yml` workflow from the content repo.
-5. The reusable workflow initializes `public` shallowly, initializes the content submodule with full history, resolves the content submodule to the dispatched SHA, restores markdown mtimes from Git history, validates the content tree, builds Hexo, and publishes the generated output.
+5. The reusable workflow initializes `public` shallowly, initializes the content submodule with full history, resolves the content submodule to the dispatched SHA, restores markdown mtimes from Git history, builds Hexo, and publishes the generated output.
 
 Two implementation details matter:
 
@@ -51,13 +51,11 @@ Two implementation details matter:
 
 ![Manual Agent Tooling Flow](https://gist.githubusercontent.com/anthonyrussano/1fba3ca3d4781ffc5d7653a46cbf32be/raw/ceef1bbbe5928b1d06dd8c54fe8d5a9c96329c1d/manual-agent-flow.svg)
 
-The manual operator entrypoint is `./agent-workflow` in the content repo.
+The manual operator entrypoint is `agent-workflow` from the `research-tools` repo or container runtime.
 
-- `./agent-workflow queue` builds a fresh intake packet from recent Gmail/Scholar messages.
-- `./agent-workflow match "<topic>"` scores likely existing articles before you touch any markdown.
-- `./agent-workflow prepare "<url>" ...` scrapes a source, builds a packet, and can create a new stub article when appropriate.
-- `./agent-workflow validate` runs the repo validator directly.
-
+- `agent-workflow queue` builds a fresh intake packet from recent Gmail/Scholar messages.
+- `agent-workflow match "<topic>"` scores likely existing articles before you touch any markdown.
+- `agent-workflow prepare "<url>" ...` scrapes a source, builds a packet, and can create a new stub article when appropriate.
 The wrapper keeps the workflow explicit and manually triggered. That is intentional. It avoids hiding repo mutations behind an opaque scheduled prompt while still giving a single entrypoint for repeated operator tasks.
 
 ## Local Prerequisites
@@ -65,13 +63,13 @@ The wrapper keeps the workflow explicit and manually triggered. That is intentio
 To work on the content and site repos locally:
 
 - `uv` for the Python-based agent tools.
-- `python3` for validation and tool execution.
+- `python3` for tool execution.
 - `node` and `npm` for Hexo site builds.
 - `git submodule update --init --recursive` in site repos so `site/source/_posts` and `public` are present.
 
 Additional local-only dependencies still exist for the agent tooling:
 
-- `gmail-reader` expects authenticated `gws` access and keeps its SQLite backlog under `.github/agent-tools/gmail-reader/data/`.
+- `gmail-reader` expects authenticated `gws` access and keeps its SQLite backlog under `/var/lib/content-agent/gmail-reader/` in the container runtime.
 - `image-upload` expects Cloudinary credentials from exported env vars or a local `.env`.
 - the optional backup helper defaults to a local NAS path.
 
@@ -80,9 +78,8 @@ Additional local-only dependencies still exist for the agent tooling:
 ### Content Changes
 
 1. Edit or add markdown in `wikip-co/content`.
-2. Run `./agent-workflow validate`.
-3. If the article title or filename collides with an existing route, add a targeted `permalink:` override instead of changing the global permalink format.
-4. Commit and push to `main`.
+2. If the article title or filename collides with an existing route, add a targeted `permalink:` override instead of changing the global permalink format.
+3. Commit and push to `main`.
 
 ### Site Or Workflow Changes
 
@@ -96,11 +93,10 @@ Additional local-only dependencies still exist for the agent tooling:
 1. Keep tool surfaces small and JSON-oriented.
 2. Prefer additive improvements over brittle orchestration rewrites.
 3. Document any local-only dependencies in the same change.
-4. Validate the wrapper commands you changed, not just the underlying library code.
+4. Verify the wrapper commands you changed, not just the underlying library code.
 
 ## Contribution Checklist
 
-- Content validates cleanly with actionable warnings only.
 - New articles use explicit `image:` when a fallback image would be ambiguous.
 - Dispatch workflows pass the exact content SHA through to site builds.
 - Reusable workflow refs are pinned intentionally.

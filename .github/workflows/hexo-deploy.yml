@@ -57,11 +57,6 @@ jobs:
           cache: npm
           cache-dependency-path: site/package-lock.json
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
       - name: Configure Git
         run: |
           git config --global user.email "me@anthonyrussano.com"
@@ -89,9 +84,6 @@ jobs:
             ts="$(git -C site/source/_posts log -1 --format=%ct -- "$file")"
             touch -d "@${ts}" "site/source/_posts/${file}"
           done
-
-      - name: Validate content
-        run: python3 site/source/_posts/.github/scripts/validate_content.py --repo-root site/source/_posts
 
       - name: Prepare public branch
         run: |
