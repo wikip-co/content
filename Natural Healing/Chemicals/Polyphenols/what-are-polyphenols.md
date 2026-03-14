@@ -35,6 +35,10 @@ Pterostilbene (PSB) (3′,5′‐dimethoxy‐resveratrol), a Resveratrol‐relat
 
 ### Anti‐inflammatory
 
+A 2026 systematic review and meta-analysis of 32 randomized controlled trials in overweight and obese populations found that polyphenol interventions can reduce pro-inflammatory IL-6 and increase anti-inflammatory IL-10, with outcomes shaped by duration, dose, and food matrix.[^6]
+
+Whole polyphenol-rich foods outperformed purified extracts for lowering IL-6 and C-reactive protein (CRP), suggesting that the broader food matrix may amplify anti-inflammatory effects.[^6]
+
 ### Anti‐carcinogenic (anticancer)
 
 ### Antimicrobial
@@ -60,6 +64,8 @@ A 2026 systematic review and meta-analysis of human intervention studies found a
 The same review reported that flavonoids, phenolic acids, and anthocyanin-rich foods (including berries, grape-derived interventions, and green tea) were commonly associated with higher Bifidobacterium, Lactobacillus, and Faecalibacterium, with concurrent improvements in metabolic and inflammatory markers in multiple study populations.[^5]
 
 The authors emphasized that short intervention duration, methodological variability, and individual microbiome metabotypes likely explain part of the inconsistent response magnitude across trials.[^5]
+
+A separate 2026 systematic review and meta-analysis focused specifically on overweight and obese populations found that polyphenol interventions promoted beneficial gut bacteria such as Bifidobacterium spp. and Akkermansia muciniphila, while the strongest anti-inflammatory effects were seen in interventions lasting under 6 weeks.[^6]
 
 ### Endurance
 
@@ -92,3 +98,11 @@ The authors emphasized that short intervention duration, methodological variabil
 **Study Type:** Systematic Review and Meta-Analysis (Human Intervention Studies)<br>
 **Author(s):** Corina Dalia Toderescu, Mohamudha Parveen, Svetlana Trifunschi, Alexandru Oancea, Gentiana Camelia Ciubuc Jurj, Iulia Gabriela Cresneac, Melania Florina Munteanu, Ioana Ciopanoiu, Casiana Boru, Elena Narcisa Pogurschi, Catalin Ionite, Alina Stefanache, Ionut Iulian Lungu<br>
 **Copy:** [Source](https://www.mdpi.com/2072-6643/18/5/782), [PDF](https://www.mdpi.com/2072-6643/18/5/782/pdf)
+
+[^6]: **Title:** [Effects of Polyphenols on Gut Health and Inflammation in Overweight and Obese Populations: A Systematic Review and Meta-analysis of Dose, Duration, and Food Matrix](https://doi.org/10.1093/nutrit/nuaf255)<br>
+**Publication:** [Nutrition Reviews](https://academic.oup.com/nutritionreviews/advance-article/doi/10.1093/nutrit/nuaf255/8514447)<br>
+**Date:** March 11, 2026<br>
+**Study Type:** Systematic Review and Meta-analysis of Randomized Controlled Trials<br>
+**Author(s):** Qianqian Wang, Huimin Zou, Yu Zhang, Kai Huang, Xiao Guan, Suijun Wang, Sen Li<br>
+**Notes:** 32 randomized controlled trials in overweight and obese populations; subgroup analyses found shorter interventions and higher doses more strongly reduced IL-6 and raised IL-10, while whole-food interventions outperformed purified extracts for lowering IL-6 and CRP.<br>
+**Copy:** [Source](https://academic.oup.com/nutritionreviews/advance-article-abstract/doi/10.1093/nutrit/nuaf255/8514447)
