@@ -16,9 +16,15 @@ The health properties of Olea europaea L. are mostly attributable to a pool of s
 
 ### Anti-Inflammatory
 
+Olive oil's phenolic compounds manipulate inflammatory pathways and scavenge reactive oxygen species, serving as a protective factor against inflammation and oxidative stress.[^4]
+
+
 ### Antioxidant
 
 ### Cardioprotective
+
+Olive oil compounds, such as hydroxytyrosol, oleuropein, and oleocanthal, have been found to act by scavenging reactive oxygen species, manipulating inflammatory pathways, and enhancing lipid and glucose metabolism, protecting against cardiovascular disease.[^4]
+
 
 ### Hypoglycemic
 
@@ -63,3 +69,4 @@ Extra virgin olive oil may provide abdominal pain relief.[^1]
 **Author(s):** <br>
 **Institutions:** <br>
 **Copy:** [archive](https://ipfs.io/ipfs/), [archive-mirror](https://cloudflare-ipfs.com/ipfs/)
+[^4]: **Title:** Olive oil compounds: biological and chemical actions for health- an updated review<br>**Author(s):** Reem Ghazali<br>**Institution(s):** King Abdulaziz University, Jeddah, Saudi Arabia<br>**Publication:** <i>Food Chemistry Advances</i><br>**Date:** 2026<br>**Abstract:** <i>Olive oil, especially extra virgin olive oil, is an important component of the Mediterranean diet known to have nutritional and therapeutic effects.</i><br>**Link:** [https://doi.org/10.1016/j.focha.2026.101273](https://doi.org/10.1016/j.focha.2026.101273)<br>
