@@ -153,7 +153,15 @@ Resveratrol induces apoptosis in human gastric carcinoma.[^3]
 
 #### Pancreatic Cancer
 
-Resveratrol induces apoptosis in pancreatic cancer cells.
+In vitro, resveratrol suppressed proliferation and clonogenic growth in the pancreatic cancer cell lines PANC1 and SW1990.[^18]
+
+In the same cell models, resveratrol reduced migration and invasion and shifted epithelial-mesenchymal transition markers toward a less invasive profile by increasing E-cadherin and reducing N-cadherin.[^18]
+
+The study also reported that resveratrol upregulated the tumor suppressor ING5 at both the mRNA and protein levels in pancreatic cancer cells.[^18]
+
+Silencing ING5 partially reversed resveratrol's inhibitory effects on growth and EMT-associated behavior, which suggests ING5 is one of the mediators of resveratrol's antitumor activity in this model.[^18]
+
+Because the paper was limited to cell-line experiments, it provides preclinical mechanistic evidence rather than clinical proof of efficacy in people with pancreatic cancer.[^18]
 
 #### Lung Cancer
 
@@ -280,3 +288,10 @@ The NAD+ precursors Nicotinic acid and Nicotinamide, when administered with Resv
 **Study Type:** Review<br>
 **Author(s):** Mengting Cheng, Moran Suo, Kaizhong Wang, Zhonghai Li<br>
 **Source:** [PubMed](https://pubmed.ncbi.nlm.nih.gov/41808512/)
+
+[^18]: **Title:** [Resveratrol inhibits pancreatic cancer progression via the ING5 signaling pathway](https://doi.org/10.1038/s41598-026-44216-x)<br>
+**Publication:** [Scientific Reports](https://www.nature.com/articles/s41598-026-44216-x)<br>
+**Date:** March 13, 2026<br>
+**Study Type:** In Vitro Cell Study (PANC1 and SW1990 pancreatic cancer cell lines)<br>
+**Author(s):** Guotai Wang, Yuan Yuan, Yi Tang, Qingyong Ma, He Jiang<br>
+**Source:** [Nature](https://www.nature.com/articles/s41598-026-44216-x), [PDF](https://www.nature.com/articles/s41598-026-44216-x_reference.pdf)
