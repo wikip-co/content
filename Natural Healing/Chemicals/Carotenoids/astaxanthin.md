@@ -44,6 +44,8 @@ tags:
 
 Astaxanthin is the most powerful natural carotenoid antioxidant.[^1]
 
+A 2026 systematic review that searched PubMed, Scopus, and Web of Science for human studies published from January 2020 to July 2025 included 15 studies and excluded in vitro and animal work.[^10] Across the included trials, the review reported that astaxanthin supplementation was associated with lower oxidative-stress markers and higher antioxidant capacity measures such as superoxide dismutase and total antioxidant capacity, while noting variation in dose, formulation, population, and outcomes.[^10]
+
 #### Brain Antioxidant
 
 Astaxanthin suppresses oxidative stress in the hippocampus and prefrontal cortex.[^8]
@@ -51,6 +53,8 @@ Astaxanthin suppresses oxidative stress in the hippocampus and prefrontal cortex
 ### Antiinflammatory
 
 Astaxanthin decreases oxidative stress and inflammatory response in cells.[^1]
+
+The same systematic review reported reductions in inflammatory markers such as IL-6 and TNF-alpha in several included human trials, with mixed or context-specific results in cardiometabolic and exercise studies.[^10]
 
 #### Neuroinflammation
 
@@ -253,3 +257,11 @@ Astaxanthin protects the organs against the toxic effects of nicotine.[^1]
 **Author(s):** <br>
 **Institutions:** <br>
 **Copy:** [archive](https://ipfs.io/ipfs/), [archive-mirror](https://cloudflare-ipfs.com/ipfs/)
+
+[^10]: **Title:** [The Role of Astaxanthin as an Antioxidant and Anti-Inflammatory Agent in Human Health: A Systematic Review](https://doi.org/10.3390/ijms27020700)<br>
+**Publication:** [International Journal of Molecular Sciences](https://www.mdpi.com/journal/ijms)<br>
+**Date:** January 9, 2026<br>
+**Study Type:** Systematic Review<br>
+**Author(s):** Giuseppina Malcangi, Angelo Michele Inchingolo, Lucia Casamassima, Irma Trilli, Laura Ferrante, Marialuisa Longo, Francesco Inchingolo, Grazia Marinelli, Andrea Palermo, Gianna Dipalma, Alessio Danilo Inchingolo<br>
+**Institutions:** Interdisciplinary Department of Medicine, University of Bari "Aldo Moro", Bari, Italy; Department of Biomedical, Surgical and Dental Sciences, Milan University, Milan, Italy; Department of Experimental Medicine, University of Salento, Lecce, Italy<br>
+**Link:** [Source](https://www.mdpi.com/1422-0067/27/2/700)
