@@ -9,6 +9,7 @@ tags:
 - Skin Health
 - Collagen Protection
 - UV Protection
+- Lead Poisoning
 ---
 **Coenzyme-Q10**
 
@@ -21,6 +22,11 @@ The anticancer effects of coenzyme Q10 were stronger with the addition of β-glu
 ### Antiinflammatory
 
 Strong Antiinflammatory effects.[^1]
+
+- Ubiquinone-10 (also known as coenzyme Q10 or CoQ10) is a lipid-soluble benzoquinone with a side chain containing 10 isoprenyl units. It exists in its reduced form (ubiquinol), which functions as an antioxidant.[^4]
+- It is a crucial part of the electron transport chain within the adenosine triphosphate (ATP) synthesis machinery and provides effective defence against the oxidation of lipid membranes, proteins, and nucleic acids.[^4]
+- Ubiquinone activates Peroxisome proliferator-activated receptor (PPAR)-mediated anti-inflammatory responses and helps scavenge free radicals while suppressing inflammatory signalling pathways.[^4]
+- In a small randomized, blind, placebo-controlled clinical trial of men with occupational lead exposure, 200 mg/day ubiquinone for two months was associated with lower Tumor Necrosis Factor alpha (TNF-α) and Interleukin-6 (IL-6) levels, while C-reactive protein (CRP) did not significantly change.[^4]
 
 ### Antioxidant
 
@@ -63,12 +69,12 @@ Strong Antiinflammatory effects.[^1]
 
 [^3]: What Are AGEs, ROS, and MMPs?, [Source](https://www.dermalogica.com/what-are-AGEs,-ROS,-and-MMPs?/ys_skinaging_9,default,pg.html)
 
-[^4]: **Title:** []()<br>
-**Publication:** []()<br>
-**Date:** <br>
-**Study Type:** Animal Study, Commentary, Human Study: In Vitro - In Vivo - In Silico, Human: Case Report, Meta Analysis, Review<br>
-**Author(s):** <br>
-**Institutions:** <br>
+[^4]: **Title:** [Ubiquinone Supplementation Lessens the Negative Impacts of Occupational Lead Exposure by Reducing Inflammation](https://mmsjournals.org/index.php/mmj/article/view/798)<br>
+**Publication:** [Malta Medical Journal](https://mmsjournals.org/index.php/mmj/article/view/798)<br>
+**Date:** July 25, 2025<br>
+**Study Type:** Human Study: Randomized, blind, placebo-controlled clinical trial<br>
+**Author(s):** Noralhuda A Yahya, Doaa K Ibrahim, Zeina A Al-Thanoon<br>
+**Institution(s):** University of Mosul<br>
 **Copy:** [archive](https://ipfs.io/ipfs/), [archive-mirror](https://cloudflare-ipfs.com/ipfs/)
 
 [^5]: **Title:** []()<br>
