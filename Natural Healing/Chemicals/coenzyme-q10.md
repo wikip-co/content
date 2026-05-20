@@ -23,7 +23,10 @@ The anticancer effects of coenzyme Q10 were stronger with the addition of β-glu
 
 Strong Antiinflammatory effects.[^1]
 
-- In a small randomized, blind, placebo-controlled clinical trial of men with occupational lead exposure, 200 mg/day ubiquinone for two months was associated with lower TNF-α and IL-6 levels, while CRP did not significantly change.[^4]
+- Ubiquinone-10 (also known as coenzyme Q10 or CoQ10) is a lipid-soluble benzoquinone with a side chain containing 10 isoprenyl units. It exists in its reduced form (ubiquinol), which functions as an antioxidant.[^4]
+- It is a crucial part of the electron transport chain within the adenosine triphosphate (ATP) synthesis machinery and provides effective defence against the oxidation of lipid membranes, proteins, and nucleic acids.[^4]
+- Ubiquinone activates Peroxisome proliferator-activated receptor (PPAR)-mediated anti-inflammatory responses and helps scavenge free radicals while suppressing inflammatory signalling pathways.[^4]
+- In a small randomized, blind, placebo-controlled clinical trial of men with occupational lead exposure, 200 mg/day ubiquinone for two months was associated with lower Tumor Necrosis Factor alpha (TNF-α) and Interleukin-6 (IL-6) levels, while C-reactive protein (CRP) did not significantly change.[^4]
 
 ### Antioxidant
 
@@ -71,8 +74,8 @@ Strong Antiinflammatory effects.[^1]
 **Date:** July 25, 2025<br>
 **Study Type:** Human Study: Randomized, blind, placebo-controlled clinical trial<br>
 **Author(s):** Noralhuda A Yahya, Doaa K Ibrahim, Zeina A Al-Thanoon<br>
-**Institutions:** University of Mosul<br>
-**Source URL:** [https://mmsjournals.org/index.php/mmj/article/view/798](https://mmsjournals.org/index.php/mmj/article/view/798)
+**Institution(s):** University of Mosul<br>
+**Copy:** [archive](https://ipfs.io/ipfs/), [archive-mirror](https://cloudflare-ipfs.com/ipfs/)
 
 [^5]: **Title:** []()<br>
 **Publication:** []()<br>
