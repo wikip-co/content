@@ -165,12 +165,13 @@ Because the paper was limited to cell-line experiments, it provides preclinical 
 
 #### Lung Cancer
 
-Resveratrol (RESV) demonstrates significant inhibitory effects on lung cancer in preclinical models.[^16]
+In a preclinical systematic review and meta-analysis, resveratrol (RESV) was associated with antitumor effects in animal lung-cancer models, but the authors rated the included studies as medium-to-low quality and reported high heterogeneity.[^16]
 
 - A meta-analysis of 23 in vivo studies (425 animals) found RESV significantly reduced tumor volume, tumor weight, and lung metastases number.[^16]
-- RESV increased the proportion of apoptotic cancer cells without negatively affecting body weight.[^16]
-- The optimal preclinical dose range was 30–100 mg/kg over 25–28 days.[^16]
-- Median lethal dose was 1,560 mg/kg, indicating a favorable safety profile.[^16]
+- RESV increased the proportion of apoptotic cancer cells and did not significantly change animal body weight in the pooled analysis.[^16]
+- Dose appeared to explain part of the heterogeneity, and the authors' dose-duration model estimated an optimal preclinical range of 30–100 mg/kg over 25–28 days.[^16]
+- A ProTox 3.0 prediction estimated a median lethal dose of 1,560 mg/kg, which is toxicology-model evidence rather than clinical safety evidence.[^16]
+- The review found no lung-cancer clinical trials of RESV and noted that low bioavailability remains a barrier to translation.[^16]
 
 #### Prostate Cancer
 
