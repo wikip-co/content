@@ -33,6 +33,10 @@ and proteins.[^1]
 - B complex vitamins are produced from carbohydrate fermentation by alcohol-producing yeasts and Lactobacillus species.[^1]
     - Externally fermenting foods prior to consuming them can increase the amounts of B vitamins (thiamin, riboflavin, and niacin) by up to 10-fold.[^1]
 
+### Oxidative Stress
+
+- In a randomized double-blind controlled trial of 76 postoperative colorectal cancer patients, six months of Lactobacillus supplementation was associated with higher serum catalase and glutathione and lower oxidized glutathione and 8-oxodG compared with placebo; F2-isoprostanes were also higher, so the oxidative-stress marker findings were mixed.[^3]
+
 ### Breakdown of Anti-nutritonal Factors (ANFs)
 
 ANFs are compounds found in staple cereals, grains, seeds, legumes and tubers that bind essential nutrients, preventing their absorption in the body.[^1]
@@ -53,6 +57,12 @@ Oxalate can also be degraded through Lactobacillus fermentations, either externa
 
 ## External fermentation can render poisonous foods edible
 
+
+## Disease / Symptom Treatment
+
+### Colorectal Cancer
+
+- In the same randomized controlled trial, Lactobacillus supplementation lowered serum CEA but did not change CA19-9, and western blot analyses found lower NRF2, ASK1, MKK3, p-p38, and MKK4 protein levels; the clinical implications remain preliminary because this was a single postoperative colorectal cancer trial.[^3]
 
 ## Lactobacillus rhamnosus GG (LGG)
 
@@ -103,3 +113,11 @@ Potential therapeutic strategy for prevention or treatment of osteoporosis.
 **Publication:** [SAGE - Therapeutic Advances in Chronic Disease](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6610433/#)<br>
 **Date:** July 2019<br>
 [Archive Link](https://ipfs.io/ipfs/QmXYhFaKGjnz1kZGvPjSXaA8U8FUwcnu4NP6gnJyHMR8pd)
+
+[^3]: **Title:** [Serum CA19-9 and CEA levels, serum CAT, GSH, oxidised glutathione levels, 8-dihidro-2'-deoksiguanosina and F2-isoprostanes levels in colorectal cancer patients and Lactobacillus: A randomised double-blind controlled trial](https://doi.org/10.5937/jomb0-56528)<br>
+**Publication:** [Journal of Medical Biochemistry](https://aseestant.ceon.rs/index.php/jomb/article/view/56528)<br>
+**Date:** 2025/05/07<br>
+**Study Type:** Human Study: Randomized Controlled Trial<br>
+**Author(s):** Shiru Chen, Weili Ning, Jiye Zhang, Zhenting Wu, Hang Zhou, Ying Liu<br>
+**Institution(s):** Department of Digestive Minimally Invasive Diagnosis and Treatment, The First Affiliated Hospital of Heilongjiang University of Traditional Chinese Medicine, Harbin, China; Heilongjiang University of Traditional Chinese Medicine, Harbin, China; First Affiliated Hospital of Heilongjiang University of Chinese Medicine in Harbin<br>
+**Source URL:** [https://aseestant.ceon.rs/index.php/jomb/article/view/56528](https://aseestant.ceon.rs/index.php/jomb/article/view/56528)
