@@ -23,6 +23,9 @@ tags:
 - Neuroprotection
 - IL-1β
 - IFN-γ
+- Oral Health
+- Dental Health
+- Periodontitis
 
 ---
 **Grape Seed Extract**
@@ -108,6 +111,12 @@ The Catechins and procyanidins found in grape seed extract strongly inhibit α-a
 
 Grape seed extract strongly inhibits both α-amylase and α-glucosidase activity, with equal and much higher potency, respectively, than acarbose (a pharmacological glucosidase inhibitor).[^2]
 
+### Periodontitis
+
+A 2026 systematic review and meta-analysis of randomized clinical trials found that grape seed extract used as an adjunct to scaling and root planing was associated with improved probing pocket depth at 3 months, based on 2 RCTs with 192 participants, but the pooled effect was not evident at 6 months in 2 smaller RCTs with 58 participants.[^5]
+
+The same review rated 3-month probing pocket depth evidence for grape seed extract as high certainty and 3-month clinical attachment level evidence as moderate certainty, while cautioning that short follow-up, different formulations, and variable delivery methods limit interpretation of long-term periodontal stability.[^5]
+
 ### Depression
 
 Grape seed extract (GSE) has been shown to exhibit antidepressant-like activity in an acute restraint stress (ARS) model of stress-induced depressive-like behavior in female mice.[^3]
@@ -166,3 +175,12 @@ The hypothalamic-pituitary-adrenal (HPA) axis plays a central role in the physio
 **Author(s):** Qianqian Wang, Huimin Zou, Yu Zhang, Kai Huang, Xiao Guan, Suijun Wang, Sen Li<br>
 **Notes:** The review pooled multiple polyphenol interventions rather than grape seed extract specifically; grape-derived interventions were part of the broader evidence base and whole-food matrices showed stronger IL-6 and CRP reductions than purified extracts.<br>
 **Copy:** [Source](https://academic.oup.com/nutritionreviews/advance-article-abstract/doi/10.1093/nutrit/nuaf255/8514447)
+
+[^5]: **Title:** [Do Adjunctive Therapies with Natural Products Improve Periodontal Clinical Parameters After Non-Surgical Treatment? A Systematic Review and Meta-Analysis](https://doi.org/10.3390/ijms27052394)<br>
+**Publication:** [International Journal of Molecular Sciences](https://www.mdpi.com/journal/ijms)<br>
+**Date:** March 4, 2026<br>
+**Study Type:** Systematic Review and Meta-analysis of Randomized Controlled Clinical Trials<br>
+**Author(s):** Rafael Scaf de Molon, Joao Victor Soares Rodrigues, Erica Dorigatti de Avila, Davi da Silva Barbirato, Joao Pedro Franco Moura, Gabriele Vanzela Monteiro, Marcos Vinicius Alves, Leticia Helena Theodoro, Rolando Vernal, Wim Teughels<br>
+**Institutions:** Sao Paulo State University (UNESP), Pernambuco Faculty of Health, Universidad de Chile, KU Leuven and University Hospitals Leuven, Chulalongkorn University, University Malaya<br>
+**Notes:** The review included 90 randomized clinical studies qualitatively and 33 in meta-analysis; grape seed extract periodontal outcomes were based on small pooled subsets and should be interpreted as adjunctive, short-term evidence rather than as replacement therapy.<br>
+**Copy:** [PubMed Central](https://pmc.ncbi.nlm.nih.gov/articles/PMC12986009/), [PubMed](https://pubmed.ncbi.nlm.nih.gov/41828611/)
