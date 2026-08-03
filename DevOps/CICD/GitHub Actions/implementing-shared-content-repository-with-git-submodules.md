@@ -1,5 +1,5 @@
 ---
-title: Implementing a Shared Content Repository with Git Submodules and GitHub Actions
+title: "Historical: Shared Content with Git Submodules and GitHub Actions"
 image: git
 tags:
 - Git
@@ -13,11 +13,13 @@ tags:
 ---
 ## Description
 
-This article documents the implementation of a shared content repository architecture using Git submodules and GitHub Actions to manage markdown content across multiple static site deployments. The solution enables centralized content management with automated deployment to multiple frontends.
+> **Historical architecture:** This article records the former submodule-based implementation. It is retained as migration history, not as current setup guidance. `wikip.co` now fetches standalone `content` and `public` repositories at build time, and `anthonyrussano.com` no longer consumes this content pipeline.
 
-For the current operator/contributor guide and rendered architecture diagrams, see [Shared Content Project Guide](/shared-content-project-guide/).
+For the supported operator/contributor flow and current architecture diagram, see [Wikip.co Content Project Guide](/shared-content-project-guide/).
 
-## Architecture Overview
+The remaining commands and design discussion below describe the retired architecture as it existed when originally implemented.
+
+## Historical Architecture Overview
 
 The implementation uses a three-repository structure:
 
@@ -385,7 +387,7 @@ Content served via API (headless CMS) instead of Git submodules.
 
 ## Conclusion
 
-This Git submodule approach provides an optimal balance between automation and simplicity for managing shared content across multiple static sites. It leverages GitHub Actions for orchestration while keeping content selection deterministic through `content_sha` dispatch payloads and preserving Hexo update dates through Git-based mtime restoration.
+This approach established a shared content source and deterministic dispatch payloads, but its nested Git state added clone, CI, and operator overhead. It has been superseded by standalone repositories plus explicit build-time fetches. The figures below describe the historical implementation only.
 
 The implementation required approximately:
 - **3,198 markdown files** unified from two repositories
