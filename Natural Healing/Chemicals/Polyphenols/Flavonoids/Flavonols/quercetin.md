@@ -33,6 +33,11 @@ tags:
 - Psychostimulant
 - Anti-Infective
 - Colorectal Cancer
+- COPD
+- Diabetes
+- Hyperuricemia
+- Bioavailability
+- SARS-CoV-2
 ---
 **Quercetin** is a plant flavonol from the flavonoid group of polyphenols.  It is widely distributed among different fruits and vegetables.[^1]
 
@@ -52,6 +57,10 @@ tags:
 
 ## Safety[^7]
 
+- Poor aqueous solubility, extensive metabolism, and low oral bioavailability continue to limit clinical translation of quercetin.[^10]
+- Poor bioavailability limits clinical use and encourages advanced drug delivery strategies.[^10]
+- Future trials should validate standardized formulations, efficacy, and long-term safety.[^10]
+
 ## Healing Properties
 
 ### Anti-Carcinogenic (anticancer)
@@ -68,17 +77,30 @@ Treatment with quercetin dihydrate has been shown to promote the killing activit
 
 The growth rate of tumor volumes and masses treated with quercetin dihydrate were decreased.[^6]
 
+- Quercetin regulates apoptosis and cell cycle progression through p53, PI3K/Akt, and mitochondrial signalling pathways, highlighting its relevance in cancer prevention and therapy.[^10]
+- Quercetin modulates PI3K/Akt and Wnt/β-catenin signaling pathways among its multitarget actions.[^10]
+
 ### Anti-Inflammatory
 
 Strong antiinflammatory activity.[^1]
 
+- Quercetin exerts potent anti-inflammatory effects through modulation of multiple signalling pathways, including NF-κB.[^10]
+- Inhibition of NF-κB and MAPK suppresses the production of pro-inflammatory mediators.[^10]
+
 ### Anti-Infective 
+
+- Quercetin exhibits antiviral activity among its broad pharmacological effects.[^10]
+- Clinical studies further suggest that quercetin may provide therapeutic benefits in SARS-CoV-2 infection, although results remain heterogeneous.[^10]
 
 ### Antioxidant
 
 Quercetin is one of the most potent antioxidants of plant origin.[^1]
 
 Quercetin has direct radical scavenging action.[^1]
+
+- Quercetin exerts potent antioxidant effects through modulation of multiple signalling pathways, including Nrf2, AMPK, and SIRT1.[^10]
+- Activation of Nrf2, AMPK, and SIRT1 enhances endogenous antioxidant defenses and maintains cellular redox homeostasis.[^10]
+- Quercetin modulates Nrf2, NF-κB, AMPK, SIRT1, PI3K/Akt and Wnt/β-catenin signaling pathways.[^10]
 
 ### Brain Health
 
@@ -125,6 +147,8 @@ Quercetin Attenuates Atherosclerotic Inflammation[^4]
 
 Quercetin inhibits atherogenesis (hardening/narrowing of the arteries).[^4]
 
+- Clinical studies suggest that quercetin may provide therapeutic benefits in cardiovascular disease, although results remain heterogeneous.[^10]
+
 ### Blood Health
 
 Inhibits platelet aggregation.[^1]
@@ -140,6 +164,7 @@ Quercetin stimulates mitochondrial biogenesis.[^1]
 - Quercetin ameliorates mitochondrial dysfunction by restoring mitochondrial membrane potential, decreases ROS
 production, and restores ATP synthesis.[^1]
 - It also increases the expression of AMP-activated protein kinase (AMPK), which is a key cell regulator of energy metabolism.[^1]
+- Quercetin modulates AMPK and SIRT1 signaling pathways relevant to cellular energy and redox homeostasis.[^10]
 
 ## Disease / Symptom Treatment
 
@@ -158,9 +183,31 @@ A systematic review and meta-analysis of preclinical studies found that querceti
 - Quercetin effectively improved the degree of crypt lesions and alleviated precancerous lesions (SMD -1.40, p = 0.02).[^9]
 - Quercetin demonstrated significant inhibitory effects on tumor cell proliferation as determined by PCNA analysis (SMD -8.22, p < 0.00001).[^9]
 
+### Chronic Obstructive Pulmonary Disease (COPD)
+
+- Clinical studies support benefits of quercetin in COPD, although results remain heterogeneous.[^10]
+
+### Diabetes
+
+- Clinical studies support benefits of quercetin in diabetes, although results remain heterogeneous.[^10]
+
+### Hyperuricemia
+
+- Clinical studies support benefits of quercetin in hyperuricemia, although results remain heterogeneous.[^10]
+
+### Sarcoidosis
+
+- Clinical studies further suggest that quercetin may provide therapeutic benefits in sarcoidosis, although results remain heterogeneous.[^10]
+
+### SARS-CoV-2 / COVID-19
+
+- Clinical studies further suggest that quercetin may provide therapeutic benefits in SARS-CoV-2 infection, although results remain heterogeneous.[^10]
+
 ### Neurodegenerative Diseases
 
 Quercetin Disaggregates Prion Fibrils and Decreases Fibril-Induced Cytotoxicity and Oxidative Stress.[^2]
+
+- A 2026 review reports neuroprotective activities of quercetin among its multitarget effects in oxidative stress-related and neurodegenerative conditions.[^10]
 
 #### Neuroinflammation
 
@@ -250,3 +297,12 @@ The NAD+ precursors Nicotinic acid and Nicotinamide, when administered with Quer
 **Date:** 2025/09/05<br>
 **Study Type:** Systematic Review and Meta-Analysis (preclinical animal studies)<br>
 **Author(s):** Duan, Xiucheng, Zhang, Liyuan, Liu, Fenye
+
+[^10]: **Title:** [From antioxidant to signal modulator: The expanding role of quercetin in human health](https://doi.org/10.1016/j.prenap.2026.100836)<br>
+**Publication:** [Pharmacological Research - Natural Products](https://www.sciencedirect.com/science/article/abs/pii/S2950199726003496)<br>
+**Date:** 2026/09/01<br>
+**Study Type:** Review<br>
+**Author(s):** Aman Kumar, Nayan Sood, Ritik Kumar Thakur, Nitin Singh, Rajneesh Kalyan, Preeti Patel, Balak Das Kurmi<br>
+**Abstract:** Quercetin, a naturally occurring flavonoid widely distributed in fruits, vegetables, and medicinal plants, has attracted considerable attention as a safe and affordable therapeutic candidate for the prevention and management of lifestyle and age-related diseases. Extensive evidence demonstrates that quercetin exerts potent antioxidant, anti-inflammatory, antiviral, chemoprotective, and immunomodulatory effects through modulation of multiple signalling pathways, including Nrf2, AMPK, SIRT1, NF-κB, Wnt/β-catenin, and p53. Clinical studies further suggest possible benefits in COPD, sarcoidosis, hyperuricemia, cardiovascular disease, and SARS-CoV-2 infection, although results remain heterogeneous. Poor aqueous solubility, extensive metabolism, and low oral bioavailability continue to limit clinical translation.<br>
+**Source URL:** [https://www.sciencedirect.com/science/article/abs/pii/S2950199726003496](https://www.sciencedirect.com/science/article/abs/pii/S2950199726003496)<br>
+**DOI:** [10.1016/j.prenap.2026.100836](https://doi.org/10.1016/j.prenap.2026.100836)
