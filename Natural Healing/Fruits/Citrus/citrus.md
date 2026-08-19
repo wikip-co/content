@@ -9,7 +9,18 @@ tags:
 - Vitamin A
 ---
 
-**Citrus** fruits and their derived products have attracted significant attention due to their potential beneficial effects on metabolic health.[^1]
+**Citrus** is a genus of flowering trees and shrubs in the family Rutaceae whose fruits include oranges, clementines, mandarins, and grapefruits.
+
+## Composition
+
+- The citrus-based foods DF0 and DF1 were administered by oral gavage (2 mL per rat per day) for eight weeks.[^1]
+  <!-- provenance | claim_kind: source_finding | source_section: 2.3.1. Experiment 1 | source_quote: The citrus-based foods DF0 and DF1 were administered by oral gavage (2 mL per rat per day) for eight weeks. This daily dose corresponds approximately to a physiologically relevant intake equivalent to about 400 g of product in humans. Each 2-mL dose contained approximately 0.058 mg β-cryptoxanthin, 0.037 mg β-carotene, 0.093 mg lycopene, 2.70 mg hesperidin, 12.5 mg pectin, and either 0.19 g sugars (DF0) or 0.07 g sugars (DF1). | cited_references: none -->
+- This daily dose corresponds approximately to a physiologically relevant intake equivalent to about 400 g of product in humans.[^1]
+  <!-- provenance | claim_kind: source_finding | source_section: 2.3.1. Experiment 1 | source_quote: The citrus-based foods DF0 and DF1 were administered by oral gavage (2 mL per rat per day) for eight weeks. This daily dose corresponds approximately to a physiologically relevant intake equivalent to about 400 g of product in humans. Each 2-mL dose contained approximately 0.058 mg β-cryptoxanthin, 0.037 mg β-carotene, 0.093 mg lycopene, 2.70 mg hesperidin, 12.5 mg pectin, and either 0.19 g sugars (DF0) or 0.07 g sugars (DF1). | cited_references: none -->
+- Each 2-mL dose contained approximately 0.058 mg β-cryptoxanthin, 0.037 mg β-carotene, 0.093 mg lycopene, 2.70 mg hesperidin, 12.5 mg pectin, and either 0.19 g sugars (DF0) or 0.07 g sugars (DF1).[^1]
+  <!-- provenance | claim_kind: source_finding | source_section: 2.3.1. Experiment 1 | source_quote: The citrus-based foods DF0 and DF1 were administered by oral gavage (2 mL per rat per day) for eight weeks. This daily dose corresponds approximately to a physiologically relevant intake equivalent to about 400 g of product in humans. Each 2-mL dose contained approximately 0.058 mg β-cryptoxanthin, 0.037 mg β-carotene, 0.093 mg lycopene, 2.70 mg hesperidin, 12.5 mg pectin, and either 0.19 g sugars (DF0) or 0.07 g sugars (DF1). | cited_references: none -->
+- The markedly higher hesperidin concentration in the citrus concentrates (1370 mg/L) compared with the juice (270 mg/L) may also have contributed to the modulation of glucose and lipid metabolism.[^1]
+  <!-- provenance | claim_kind: source_finding | source_section: 4.3. Effect of membrane-processed citrus concentrates compared to citrus juice | source_quote: The markedly higher hesperidin concentration in the citrus concentrates (1370 mg/L) compared with the juice (270 mg/L) may also have contributed to the modulation of glucose and lipid metabolism. | cited_references: none -->
 
 ## Healing Properties
 
@@ -26,8 +37,8 @@ A citrus formulation composed of clementine and pink grapefruit (60:40, v/v) and
   <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: Moreover, the citrus concentrates enhanced hepatic vitamin A stores in prediabetic rats. | cited_references: none -->
 - In fructose-fed rats, these beneficial effects were observed irrespective of the sugar content of the concentrate, suggesting that the membrane-generated, bioactive-rich citrus matrix plays a key role beyond sugar reduction.[^1]
   <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: These beneficial effects were observed irrespective of the sugar content of the concentrate, suggesting that the membrane-generated, bioactive-rich citrus matrix plays a key role beyond sugar reduction. | cited_references: none -->
-- In fructose-fed rats, compared with the original citrus juice, the membrane-processed concentrates produced broader metabolic improvements, particularly in parameters related to insulin sensitivity and glucose homeostasis.[^1]
-  <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: Compared with the original citrus juice, the membrane-processed concentrates produced broader metabolic improvements, particularly in parameters related to insulin sensitivity and glucose homeostasis, which are key features of the prediabetic state. | cited_references: none -->
+- Likewise, supplementation with the citrus concentrates significantly decreased systolic blood pressure compared with untreated fructose-fed rats, reaching values of 127.65 ± 3.81 mmHg and 126.33 ± 3.69 mmHg in the DF0 and DF1 groups, respectively.[^1]
+  <!-- provenance | claim_kind: source_finding | source_section: 3.5.1. Experiment 1 | source_quote: Likewise, supplementation with the citrus concentrates significantly decreased systolic blood pressure compared with untreated fructose-fed rats, reaching values of 127.65 ± 3.81 mmHg and 126.33 ± 3.69 mmHg in the DF0 and DF1 groups, respectively. | cited_references: none -->
 - In fructose-fed rats, although the effects were generally less pronounced than those observed with metformin, the citrus concentrates showed potential as nutrient-dense dietary interventions for the early management of metabolic disturbances associated with MetS/T2D.[^1]
   <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: Although the effects were generally less pronounced than those observed with metformin, the citrus concentrates showed potential as nutrient-dense dietary interventions for the early management of metabolic disturbances associated with MetS/T2D. | cited_references: none -->
 
