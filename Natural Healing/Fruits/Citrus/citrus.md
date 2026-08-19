@@ -13,23 +13,39 @@ tags:
 
 ## Healing Properties
 
+### Preclinical Evidence (Animal Studies)
+
+A citrus formulation composed of clementine and pink grapefruit (60:40, v/v) and enriched in bioactive compounds could improve glucose homeostasis, insulin sensitivity, lipid metabolism, and vitamin A status following supplementation in fructose-fed rats.[^1]
+<!-- provenance | claim_kind: formulation_definition | source_section: 1. Introduction | source_quote: The objective was to investigate whether a citrus formulation composed of clementine and pink grapefruit (60:40, *v*/v) and enriched in bioactive compounds could improve glucose homeostasis, insulin sensitivity, lipid metabolism, and vitamin A status following supplementation in fructose-fed rats. | cited_references: none -->
+
 > **Evidence warning — animal/preclinical evidence:** These findings do not by themselves establish effects in humans.
 
-- A membrane processing approach was used to produce citrus-based functional food enriched in carotenoids, hesperidin, and pectins.[^1]
-  <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: A membrane processing approach was used to produce citrus-based functional food enriched in carotenoids, hesperidin, and pectins. | cited_references: none -->
-- Consumption of the citrus concentrates improved glucose tolerance, fasting glycaemia, insulinaemia, insulin sensitivity, and lipid profile, with efficacy approaching that of metformin.[^1]
+- In fructose-fed rats, consumption of the citrus concentrates improved glucose tolerance, fasting glycaemia, insulinaemia, insulin sensitivity, and lipid profile, with efficacy approaching that of metformin.[^1]
   <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: Consumption of the citrus concentrates improved glucose tolerance, fasting glycaemia, insulinaemia, insulin sensitivity, and lipid profile, with efficacy approaching that of metformin. | cited_references: none -->
 - The citrus concentrates enhanced hepatic vitamin A stores in prediabetic rats.[^1]
   <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: Moreover, the citrus concentrates enhanced hepatic vitamin A stores in prediabetic rats. | cited_references: none -->
-- These beneficial effects were observed irrespective of the sugar content of the concentrate, suggesting that the membrane-generated, bioactive-rich citrus matrix plays a key role beyond sugar reduction.[^1]
+- In fructose-fed rats, these beneficial effects were observed irrespective of the sugar content of the concentrate, suggesting that the membrane-generated, bioactive-rich citrus matrix plays a key role beyond sugar reduction.[^1]
   <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: These beneficial effects were observed irrespective of the sugar content of the concentrate, suggesting that the membrane-generated, bioactive-rich citrus matrix plays a key role beyond sugar reduction. | cited_references: none -->
-- Compared with the original citrus juice, the membrane-processed concentrates produced broader metabolic improvements, particularly in parameters related to insulin sensitivity and glucose homeostasis.[^1]
+- In fructose-fed rats, compared with the original citrus juice, the membrane-processed concentrates produced broader metabolic improvements, particularly in parameters related to insulin sensitivity and glucose homeostasis.[^1]
   <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: Compared with the original citrus juice, the membrane-processed concentrates produced broader metabolic improvements, particularly in parameters related to insulin sensitivity and glucose homeostasis, which are key features of the prediabetic state. | cited_references: none -->
+- In fructose-fed rats, although the effects were generally less pronounced than those observed with metformin, the citrus concentrates showed potential as nutrient-dense dietary interventions for the early management of metabolic disturbances associated with MetS/T2D.[^1]
+  <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: Although the effects were generally less pronounced than those observed with metformin, the citrus concentrates showed potential as nutrient-dense dietary interventions for the early management of metabolic disturbances associated with MetS/T2D. | cited_references: none -->
+
+### Glycemic Control
+
 - Diets rich in citrus fruits, as well as the consumption of orange and grapefruit juices, have been associated with improved glycemic control and a reduced risk of several chronic diseases, including diabetes.[^1]
   <!-- provenance | claim_kind: background_fact | source_section: 1. Introduction | source_quote: Diets rich in citrus fruits, as well as the consumption of orange and grapefruit juices, have been associated with improved glycemic control and a reduced risk of several chronic diseases, including diabetes ([Aruoma et al., 2012](#bb0010); [Saini et al., 2022](#bb0170)). | cited_references: Aruoma et al., 2012: 2. Aruoma et al., 2012 O.I. Aruoma, B. Landes, D. Ramful-Baboolall, E. Bourdon, V. Neergheen-Bhujun, K.H. Wagner, T. Bahorun Functional benefits of citrus fruits in the management of diabetes Preventive Medicine, 54 (Suppl) (2012), pp. S12-S16; Saini et al., 2022: 34. Saini et al., 2022 R.K. Saini, A. Ranjit, K. Sharma, P. Prasad, X.M. Shang, K.G.M. Gowda, Y.S. Keum Bioactive compounds of citrus fruits: A review of composition and health benefits of carotenoids, flavonoids, limonoids, and terpenes Antioxidants, 11 (2) (2022) -->
+
+### Nutrient Composition
+
 - Citrus juices are nutrient-dense beverages that naturally contain vitamins, minerals, soluble fibers, and a wide variety of phytochemicals, including flavonoids and carotenoids, whose composition depends on the citrus species and cultivar.[^1]
   <!-- provenance | claim_kind: background_fact | source_section: 1. Introduction | source_quote: Citrus juices are nutrient-dense beverages that naturally contain vitamins, minerals, soluble fibers, and a wide variety of phytochemicals, including flavonoids and carotenoids, whose composition depends on the citrus species and cultivar ([Dhuique-Mayer & Servent, 2025](#bb0065)). | cited_references: Dhuique-Mayer & Servent, 2025: 13. Dhuique-Mayer and Servent, 2025 C. Dhuique-Mayer, A. Servent An overview of the nutritional quality and health benefits linked to the world diversity of citrus fruits/juices Journal of Food Science, 90 (1) (2025), Article e17576 -->
-- Citrus fruits are also important dietary sources of carotenoids. Provitamin A carotenoids, particularly β-cryptoxanthin, are abundant in many mandarin and clementine varieties, whereas pink grapefruit contains substantial amounts of lycopene, a non-provitamin A carotenoid.[^1]
+
+### Carotenoid Content
+
+- Citrus fruits are also important dietary sources of carotenoids.[^1]
+  <!-- provenance | claim_kind: background_fact | source_section: 1. Introduction | source_quote: Citrus fruits are also important dietary sources of carotenoids. Provitamin A carotenoids, particularly β-cryptoxanthin, are abundant in many mandarin and clementine varieties, whereas pink grapefruit contains substantial amounts of lycopene, a non-provitamin A carotenoid. | cited_references: none -->
+- Provitamin A carotenoids, particularly β-cryptoxanthin, are abundant in many mandarin and clementine varieties, whereas pink grapefruit contains substantial amounts of lycopene, a non-provitamin A carotenoid.[^1]
   <!-- provenance | claim_kind: background_fact | source_section: 1. Introduction | source_quote: Citrus fruits are also important dietary sources of carotenoids. Provitamin A carotenoids, particularly β-cryptoxanthin, are abundant in many mandarin and clementine varieties, whereas pink grapefruit contains substantial amounts of lycopene, a non-provitamin A carotenoid. | cited_references: none -->
 
 [^1]: **Title:** [A functional citrus-based food obtained by membrane process vs. metformin for the prevention of metabolic syndrome/type 2 diabetes in rats](https://doi.org/10.1016/j.foodres.2026.120323)<br>
