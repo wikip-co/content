@@ -19,35 +19,57 @@ A citrus formulation composed of clementine and pink grapefruit (60:40, v/v) and
 
 ### Glycemic Control
 
-- In fructose-fed rats, consumption of membrane-processed citrus concentrates improved glucose tolerance, with efficacy approaching that of metformin.[^1]
+- In fructose-fed rats, consumption of the citrus concentrates improved glucose tolerance, fasting glycaemia, insulinaemia, insulin sensitivity, and lipid profile, with efficacy approaching that of metformin.[^1]
   <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: Consumption of the citrus concentrates improved glucose tolerance, fasting glycaemia, insulinaemia, insulin sensitivity, and lipid profile, with efficacy approaching that of metformin. | cited_references: none -->
-- In fructose-fed rats, treatment with the citrus concentrates (DF0 and DF1) significantly attenuated these alterations.[^1]
-  <!-- provenance | claim_kind: source_finding | source_section: 3.3. Glycemia and insulinemia after 8 weeks | source_quote: Treatment with the citrus concentrates (DF0 and DF1) significantly attenuated these alterations. Indeed, plasma glucose, insulin concentrations, and HOMA-IR values in citrus-treated rats did not differ significantly from those observed in the control or metformin-treated groups. | cited_references: none -->
-- Indeed, plasma glucose, insulin concentrations, and HOMA-IR values in citrus-treated rats did not differ significantly from those observed in the control or metformin-treated groups.[^1]
-  <!-- provenance | claim_kind: source_finding | source_section: 3.3. Glycemia and insulinemia after 8 weeks | source_quote: Treatment with the citrus concentrates (DF0 and DF1) significantly attenuated these alterations. Indeed, plasma glucose, insulin concentrations, and HOMA-IR values in citrus-treated rats did not differ significantly from those observed in the control or metformin-treated groups. | cited_references: none -->
-- fructose-fed rats treated with the citrus concentrates DF0 and DF1 exhibited a significant increase in insulin-stimulated P-Akt/Akt ratio compared with untreated fructose-fed rats.[^1]
-  <!-- provenance | claim_kind: source_finding | source_section: 3.4. Insulin resistance from muscles | source_quote: fructose-fed rats treated with the citrus concentrates DF0 and DF1 exhibited a significant increase in insulin-stimulated P-Akt/Akt ratio compared with untreated fructose-fed rats. | cited_references: none -->
+- In citrus-treated rats, plasma glucose, insulin concentrations, and HOMA-IR values did not differ significantly from those observed in the control or metformin-treated groups.[^1]
+  <!-- provenance | claim_kind: source_finding | source_section: 3.3. Glycemia and insulinemia after 8 weeks | source_quote: Indeed, plasma glucose, insulin concentrations, and HOMA-IR values in citrus-treated rats did not differ significantly from those observed in the control or metformin-treated groups. | cited_references: none -->
+- In fructose-fed rats, compared with the original citrus juice, the membrane-processed concentrates produced broader metabolic improvements, particularly in parameters related to insulin sensitivity and glucose homeostasis, which are key features of the prediabetic state.[^1]
+  <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: Compared with the original citrus juice, the membrane-processed concentrates produced broader metabolic improvements, particularly in parameters related to insulin sensitivity and glucose homeostasis, which are key features of the prediabetic state. | cited_references: none -->
+- Diets rich in citrus fruits, as well as the consumption of orange and grapefruit juices, have been associated with improved glycemic control and a reduced risk of several chronic diseases, including diabetes.[^1]
+  <!-- provenance | claim_kind: background_fact | source_section: 1. Introduction | source_quote: Diets rich in citrus fruits, as well as the consumption of orange and grapefruit juices, have been associated with improved glycemic control and a reduced risk of several chronic diseases, including diabetes ([Aruoma et al., 2012](#bb0010); [Saini et al., 2022](#bb0170)). | cited_references: none -->
 
 ### Lipid Metabolism
 
-- In fructose-fed rats, treatment with either DF0 or DF1 significantly attenuated these alterations.[^1]
-  <!-- provenance | claim_kind: source_finding | source_section: 3.5.1. Experiment 1 | source_quote: Treatment with either DF0 or DF1 significantly attenuated these alterations. Indeed, triglyceride concentrations and LDL/HDL ratios in citrus-treated rats did not differ significantly from those observed in the control or metformin-treated groups. | cited_references: none -->
-- Indeed, triglyceride concentrations and LDL/HDL ratios in citrus-treated rats did not differ significantly from those observed in the control or metformin-treated groups.[^1]
-  <!-- provenance | claim_kind: source_finding | source_section: 3.5.1. Experiment 1 | source_quote: Treatment with either DF0 or DF1 significantly attenuated these alterations. Indeed, triglyceride concentrations and LDL/HDL ratios in citrus-treated rats did not differ significantly from those observed in the control or metformin-treated groups. | cited_references: none -->
+- In citrus-treated rats, triglyceride concentrations and LDL/HDL ratios did not differ significantly from those observed in the control or metformin-treated groups.[^1]
+  <!-- provenance | claim_kind: source_finding | source_section: 3.5.1. Experiment 1 | source_quote: Indeed, triglyceride concentrations and LDL/HDL ratios in citrus-treated rats did not differ significantly from those observed in the control or metformin-treated groups. | cited_references: none -->
+
+### Vitamin A Status
+
+- Moreover, the citrus concentrates enhanced hepatic vitamin A stores in prediabetic rats.[^1]
+  <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: Moreover, the citrus concentrates enhanced hepatic vitamin A stores in prediabetic rats. | cited_references: none -->
+
+### Metabolic Health
+
+- In fructose-fed rats, these beneficial effects were observed irrespective of the sugar content of the concentrate, suggesting that the membrane-generated, bioactive-rich citrus matrix plays a key role beyond sugar reduction.[^1]
+  <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: These beneficial effects were observed irrespective of the sugar content of the concentrate, suggesting that the membrane-generated, bioactive-rich citrus matrix plays a key role beyond sugar reduction. | cited_references: none -->
+- In fructose-fed rats, although the effects were generally less pronounced than those observed with metformin, the citrus concentrates showed potential as nutrient-dense dietary interventions for the early management of metabolic disturbances associated with MetS/T2D.[^1]
+  <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: Although the effects were generally less pronounced than those observed with metformin, the citrus concentrates showed potential as nutrient-dense dietary interventions for the early management of metabolic disturbances associated with MetS/T2D. | cited_references: none -->
 
 ### Blood Pressure
 
 - Likewise, supplementation with the citrus concentrates significantly decreased systolic blood pressure compared with untreated fructose-fed rats, reaching values of 127.65 ± 3.81 mmHg and 126.33 ± 3.69 mmHg in the DF0 and DF1 groups, respectively.[^1]
   <!-- provenance | claim_kind: source_finding | source_section: 3.5.1. Experiment 1 | source_quote: Likewise, supplementation with the citrus concentrates significantly decreased systolic blood pressure compared with untreated fructose-fed rats, reaching values of 127.65 ± 3.81 mmHg and 126.33 ± 3.69 mmHg in the DF0 and DF1 groups, respectively. | cited_references: none -->
 
+### Nutrient Composition
+
+- Regular consumption of 100% citrus juices has been reported to provide important nutritional benefits and may contribute to attenuating risk factors associated with MetS.[^1]
+  <!-- provenance | claim_kind: background_fact | source_section: 1. Introduction | source_quote: Likewise, regular consumption of 100% citrus juices has been reported to provide important nutritional benefits and may contribute to attenuating risk factors associated with MetS ([Rampersaud & Valim, 2017](#bb0155)). | cited_references: none -->
+- Citrus juices are nutrient-dense beverages that naturally contain vitamins, minerals, soluble fibers, and a wide variety of phytochemicals, including flavonoids and carotenoids, whose composition depends on the citrus species and cultivar.[^1]
+  <!-- provenance | claim_kind: background_fact | source_section: 1. Introduction | source_quote: Citrus juices are nutrient-dense beverages that naturally contain vitamins, minerals, soluble fibers, and a wide variety of phytochemicals, including flavonoids and carotenoids, whose composition depends on the citrus species and cultivar ([Dhuique-Mayer & Servent, 2025](#bb0065)). | cited_references: none -->
+
+### Antioxidant and Anti-inflammatory Activity
+
+- Citrus flavonoids have been extensively investigated for their antioxidant, anti-inflammatory, cardioprotective, and metabolic properties.[^1]
+  <!-- provenance | claim_kind: background_fact | source_section: 1. Introduction | source_quote: Among these bioactive compounds, citrus flavonoids have been extensively investigated for their antioxidant, anti-inflammatory, cardioprotective, and metabolic properties ([Den Hartogh & Tsiani, 2019](#bb0055); [Lv et al., 2015](#bb0125)). | cited_references: none -->
+
 ### Carotenoid Content
 
-- In fructose-fed rats, overall, these results confirm that lycopene from the grapefruit-containing citrus products was absorbed and accumulated in the liver, irrespective of the formulation administered.[^1]
+- In fructose-fed rats, lycopene from the grapefruit-containing citrus products was absorbed and accumulated in the liver, irrespective of the formulation administered.[^1]
   <!-- provenance | claim_kind: source_finding | source_section: 3.6. Plasma and liver retinoid and carotenoid concentrations | source_quote: Overall, these results confirm that lycopene from the grapefruit-containing citrus products was absorbed and accumulated in the liver, irrespective of the formulation administered. | cited_references: none -->
 - Citrus fruits are also important dietary sources of carotenoids.[^1]
-  <!-- provenance | claim_kind: background_fact | source_section: 1. Introduction | source_quote: Citrus fruits are also important dietary sources of carotenoids. Provitamin A carotenoids, particularly β-cryptoxanthin, are abundant in many mandarin and clementine varieties, whereas pink grapefruit contains substantial amounts of lycopene, a non-provitamin A carotenoid. | cited_references: none -->
+  <!-- provenance | claim_kind: background_fact | source_section: 1. Introduction | source_quote: Citrus fruits are also important dietary sources of carotenoids. | cited_references: none -->
 - Provitamin A carotenoids, particularly β-cryptoxanthin, are abundant in many mandarin and clementine varieties, whereas pink grapefruit contains substantial amounts of lycopene, a non-provitamin A carotenoid.[^1]
-  <!-- provenance | claim_kind: background_fact | source_section: 1. Introduction | source_quote: Citrus fruits are also important dietary sources of carotenoids. Provitamin A carotenoids, particularly β-cryptoxanthin, are abundant in many mandarin and clementine varieties, whereas pink grapefruit contains substantial amounts of lycopene, a non-provitamin A carotenoid. | cited_references: none -->
+  <!-- provenance | claim_kind: background_fact | source_section: 1. Introduction | source_quote: Provitamin A carotenoids, particularly β-cryptoxanthin, are abundant in many mandarin and clementine varieties, whereas pink grapefruit contains substantial amounts of lycopene, a non-provitamin A carotenoid. | cited_references: none -->
 
 [^1]: **Title:** [A functional citrus-based food obtained by membrane process vs. metformin for the prevention of metabolic syndrome/type 2 diabetes in rats](https://doi.org/10.1016/j.foodres.2026.120323)<br>
 **Publication:** [Food Research International](https://www.sciencedirect.com/science/article/pii/S0963996926020107)<br>
