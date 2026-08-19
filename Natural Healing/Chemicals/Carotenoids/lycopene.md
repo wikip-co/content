@@ -46,6 +46,26 @@ Lycopene protects against UV-induced erythema in humans.[^1]
 
 - Erythema is a superficial reddening of the skin, usually in patches, as a result of injury or irritation causing dilatation of the blood capillaries.[^1]
 
+This review summarizes current evidence on the impact of lycopene on bone health via the RANK/RANKL/OPG signaling pathway, a key regulator of bone remodeling.[^3]
+<!-- provenance | claim_kind: section_summary | source_section: ABSTRACT | source_quote: This review summarizes current evidence on the impact of lycopene on bone health via the RANK/RANKL/OPG signaling pathway, a key regulator of bone remodeling. | cited_references: none -->
+
+### Bone Health
+
+- Lycopene may improve bone health via multiple pathways, including the suppression of inflammatory cytokines, stimulation of osteoblast activity, regulation of the wingless-related integration site (Wnt)/β-catenin pathway, and modulation of the receptor activator of nuclear factor-kB (RANK)/RANK ligand (RANKL)/osteoprotegerin (OPG) pathway.[^3]
+  <!-- provenance | claim_kind: source_finding | source_section: ABSTRACT | source_quote: Lycopene, a lipophilic carotenoid and an acyclic isomer of beta‐carotene, functions as an antioxidant and may improve bone health via multiple pathways, including the suppression of inflammatory cytokines, stimulation of osteoblast activity, regulation of the wingless‐related integration site (Wnt)/β‐catenin pathway, and modulation of the receptor activator of nuclear factor‐kB (RANK)/RANK ligand (RANKL)/osteoprotegerin (OPG) pathway. | cited_references: none -->
+- Lycopene may protect osteoblasts by reducing reactive oxygen species and stress-mediated apoptosis.[^3]
+  <!-- provenance | claim_kind: source_finding | source_section: ABSTRACT | source_quote: Lycopene may protect osteoblasts by reducing reactive oxygen species and stress‐mediated apoptosis. | cited_references: none -->
+- Lycopene may attenuate inflammation by suppressing NF-κB signaling and reduction of pro-inflammatory cytokines, including TNF-α, IL-1β, IL-6, and IL-17.[^3]
+  <!-- provenance | claim_kind: source_finding | source_section: ABSTRACT | source_quote: Furthermore, lycopene may attenuate inflammation by suppressing NF‐κB signaling and reduction of pro‐inflammatory cytokines, including TNF‐α, IL‐1β, IL‐6, and IL‐17. | cited_references: none -->
+- In diabetes, lycopene may, in addition, facilitate bone turnover renewal, thereby preserving bone metabolic balance.[^3]
+  <!-- provenance | claim_kind: source_finding | source_section: ABSTRACT | source_quote: In diabetes, lycopene may, in addition, facilitate bone turnover renewal, thereby preserving bone metabolic balance. | cited_references: none -->
+- Lycopene may contribute to the downregulation of RANKL transcription, thereby hindering the development and activation of osteoclasts, the cells primarily responsible for bone resorption.[^3]
+  <!-- provenance | claim_kind: source_finding | source_section: 5. Conclusion | source_quote: Lycopene may contribute to the downregulation of RANKL transcription, thereby hindering the development and activation of osteoclasts, the cells primarily responsible for bone resorption. | cited_references: none -->
+- The antioxidant properties of lycopene may confer further protective effects on bone health by reducing oxidative stress and affecting the RANK/RANKL pathway, which is increasingly acknowledged as a key modulator in osteoporotic changes and impaired bone formation.[^3]
+  <!-- provenance | claim_kind: source_finding | source_section: 5. Conclusion | source_quote: In addition, the antioxidant properties of lycopene may confer further protective effects on bone health by reducing oxidative stress and affecting the RANK/RANKL pathway, which is increasingly acknowledged as a key modulator in osteoporotic changes and impaired bone formation. | cited_references: none -->
+- Considering the variations in lycopene source, skeletal sites, dose, duration, and different demographic groups, a firm dose–response recommendation is not defined yet.[^3]
+  <!-- provenance | claim_kind: source_finding | source_section: 5. Conclusion | source_quote: Considering the variations in lycopene source, skeletal sites, dose, duration, and different demographic groups, a firm dose–response recommendation is not defined yet. | cited_references: none -->
+
 ## Disease / Symptom Treatment
 
 ### Rheumatoid Arthritis
@@ -69,3 +89,12 @@ Lycopene protects against UV-induced erythema in humans.[^1]
 **Institution(s):** <br>
 **Abstract:** <br>
 [Archive Link](https://ipfs.io/ipfs/) -->
+
+[^3]: **Title:** [Role of the Antioxidant Lycopene in Bone Health: Emphasis on the RANKL/RANK/OPG Signaling Pathway](https://doi.org/10.1002/fsn3.72229)<br>
+**Publication:** [Food Science & Nutrition](https://pmc.ncbi.nlm.nih.gov/articles/PMC13473750/)<br>
+**Date:** 2026<br>
+**Study Type:** Review<br>
+**Author(s):** Helia Esmaili, Nazanin Asgari, Negar Mosayeb, Sadegh Jafarnejad<br>
+**Abstract:** Bone health is maintained by a balance between bone formation and bone resorption. Lycopene, a lipophilic carotenoid and an acyclic isomer of beta‐carotene, functions as an antioxidant and may improve bone health via multiple pathways, including the suppression of inflammatory cytokines, stimulation of osteoblast activity, regulation of the wingless‐related integration site (Wnt)/β‐catenin pathway, and modulation of the receptor activator of nuclear factor‐kB (RANK)/RANK ligand (RANKL)/osteoprotegerin (OPG) pathway. Our understanding of the mechanisms involved in bone remodeling has improved with the discovery of the RANK/RANKL/OPG pathway. Elevated RANKL/RANK signaling promotes osteoclastogenesis and consequently bone resorption, while inhibition of this pathway may prevent bone resorption. This review summarizes current evidence on the impact of lycopene on bone health via the RANK/RANKL/OPG signaling pathway, a key regulator of bone remodeling.<br>
+**DOI:** [10.1002/fsn3.72229](https://doi.org/10.1002/fsn3.72229)<br>
+**Source URL:** [https://pmc.ncbi.nlm.nih.gov/articles/PMC13473750/](https://pmc.ncbi.nlm.nih.gov/articles/PMC13473750/)
