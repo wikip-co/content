@@ -221,6 +221,10 @@ Green Tea with EGCG (Active Compound) Enhances the Expression of M2 phenotypes.[
 
 Both EGCG and standardized green tea extract can increase CD206 expression, but standardized green tea extract outperforms EGCG.[^9]
 
+### Multiple Myeloma (Animal Evidence)
+
+- An animal study showed that Biluochun tea infusion significantly reduced MM tumor size, downregulated the proliferation marker Ki-67, and increased TUNEL-positive apoptotic cells in MM tumor tissues.[^12]
+
 [^1]: **Title:** [Epigallocatechin-3-gallate remodels apolipoprotein A-I amyloid fibrils into soluble oligomers in the presence of heparin](http://dx.doi.org/10.1074/jbc.RA118.002038)<br>
 **Publication:** [Journal of Biological Chemistry](https://www.jbc.org/)<br>
 **Date:** May 31, 2018<br>
@@ -315,3 +319,12 @@ Both EGCG and standardized green tea extract can increase CD206 expression, but 
 **Study Type:** Systematic Review<br>
 **Author(s):** Elisha Rosalyn Rosdah, Eka Febri Zulissetiana, Irfannuddin Irfannuddin<br>
 **Institutions:** Universitas Sriwijaya, Palembang, Indonesia; Universitas Indo Global Mandiri, Palembang, Indonesia
+
+[^12]: **Title:** [Significant anti-myeloma potential of green tea infusion and its component dihydromyricetin](https://doi.org/10.1097/ms9.0000000000005494)<br>
+**Publication:** [Annals of Medicine & Surgery](https://www.ovid.com/jnls/annals-of-medicine-and-surgery/fulltext/10.1097/ms9.0000000000005494~significant-anti-myeloma-potential-of-green-tea-infusion-and)<br>
+**Date:** 2026-08-06<br>
+**Study Type:** Animal Study: In Vivo<br>
+**Author(s):** Juan Xiao, Hongyu Zhu, Yanxiao Han, Chenliu Fan, Yuyan Chen, Xiaoli Liu, Chengyun Zheng, Yang Jiang<br>
+**Abstract:** Multiple myeloma (MM) is a fatal hematological malignancy characterized by overgrowth of monoclonal plasma cells. Although green tea exhibits well-documented antitumor properties, its specific effects against MM remain poorly characterized. This study aimed to investigate the anti-myeloma activity of infusions from four representative green teas and identify their effective components. We found that apoptosis of MM cells was induced by green tea infusions in a concentration-dependent manner, with Biluochun tea infusion showing the most potent efficacy. An animal study showed that Biluochun tea infusion significantly reduced MM tumor size, downregulated the proliferation marker Ki-67, and increased TUNEL-positive apoptotic cells in MM tumor tissues. Furthermore, mass spectrometry analysis identified dihydromyricetin (DMY) as a pivotal distinguishing component of Biluochun among the four tea infusions. As expected, DMY induced apoptosis in MM cells in a concentration-dependent manner, accompanied by decreased mitochondrial membrane potential and elevated expression of cleaved caspase-3 and caspase-8. These findings indicate that DMY elicits anti-myeloma effects through activation of both the intrinsic mitochondrial and extrinsic apoptotic pathways. Collectively, this study provides preliminary preclinical evidence supporting the anti-myeloma activity of DMY in cell and xenograft mouse models, which lays a foundation for subsequent translational research exploring green tea-derived compounds against MM; further multilayered validation is required to confirm its clinical value.<br>
+**DOI:** [10.1097/ms9.0000000000005494](https://doi.org/10.1097/ms9.0000000000005494)<br>
+**Source URL:** [https://www.ovid.com/jnls/annals-of-medicine-and-surgery/fulltext/10.1097/ms9.0000000000005494~significant-anti-myeloma-potential-of-green-tea-infusion-and](https://www.ovid.com/jnls/annals-of-medicine-and-surgery/fulltext/10.1097/ms9.0000000000005494~significant-anti-myeloma-potential-of-green-tea-infusion-and)
