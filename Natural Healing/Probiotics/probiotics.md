@@ -2,6 +2,8 @@
 title: Probiotics
 tags:
 - Antioxidant
+- Antiinflammatory
+- Skin Hydration
 ---
 **Probiotics (and Prebiotics)**
 
@@ -92,6 +94,16 @@ LGG ameliorates alcohol-induced liver injury by improving intestinal integrity.
 
 Potential therapeutic strategy for prevention or treatment of osteoporosis.
 
+## Disease / Symptom Treatment
+#### Acne
+
+- However, after the 12-week intervention, probiotics significantly alleviated disease severity grading (standard mean difference −1.38, 95% confidence interval −2.69 to −0.08); decreased the total number of lesions (mean difference −10.4, 95% CI −16.2 to −4.51), the number of inflammatory lesions and the number of noninflammatory lesions; and improved skin hydration and sebum content compared with control.[^3]
+  <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: However, after the 12-week intervention, probiotics significantly alleviated disease severity grading (standard mean difference −1.38, 95% confidence interval −2.69 to −0.08); decreased the total number of lesions (mean difference −10.4, 95% CI −16.2 to −4.51), the number of inflammatory lesions and the number of noninflammatory lesions; and improved skin hydration and sebum content compared with control. | cited_references: none -->
+- After the 12-week intervention, probiotics significantly alleviated disease severity grading (standard mean difference −1.38, 95% confidence interval −2.69 to −0.08); decreased the total number of lesions (mean difference −10.4, 95% CI −16.2 to −4.51), the number of inflammatory lesions and the number of noninflammatory lesions; and improved skin hydration and sebum content compared with control.[^3]
+  <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: However, after the 12-week intervention, probiotics significantly alleviated disease severity grading (standard mean difference −1.38, 95% confidence interval −2.69 to −0.08); decreased the total number of lesions (mean difference −10.4, 95% CI −16.2 to −4.51), the number of inflammatory lesions and the number of noninflammatory lesions; and improved skin hydration and sebum content compared with control. | cited_references: none -->
+- However, after the 12-week intervention, probiotics significantly alleviated disease severity grading (standard mean difference −1.38, 95% confidence interval −2.69 to −0.08); decreased the total number of lesions (mean difference −10.4, 95% CI −16.2 to −4.51), the number of inflammatory lesions and the number of noninflammatory lesions; and improved skin hydration and sebum content compared with control.[^3]
+  <!-- provenance | claim_kind: source_finding | source_section: Abstract | source_quote: However, after the 12-week intervention, probiotics significantly alleviated disease severity grading (standard mean difference −1.38, 95% confidence interval −2.69 to −0.08); decreased the total number of lesions (mean difference −10.4, 95% CI −16.2 to −4.51), the number of inflammatory lesions and the number of noninflammatory lesions; and improved skin hydration and sebum content compared with control. | cited_references: none -->
+
 [^1]: 
 **Title:** [Fermentation Technology as a Driver of Human Brain Expansion](https://doi.org/10.20944/preprints202010.0135.v1)<br>
 **Publication:** [Preprints](https://www.preprints.org/)<br>
@@ -103,3 +115,12 @@ Potential therapeutic strategy for prevention or treatment of osteoporosis.
 **Publication:** [SAGE - Therapeutic Advances in Chronic Disease](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6610433/#)<br>
 **Date:** July 2019<br>
 [Archive Link](https://ipfs.io/ipfs/QmXYhFaKGjnz1kZGvPjSXaA8U8FUwcnu4NP6gnJyHMR8pd)
+
+[^3]: **Title:** [Efficacy of oral probiotics in patients with acne: a systematic review and meta-analysis of randomized trials | Clinical and Experimental Dermatology](https://doi.org/10.1093/ced/llaf388)<br>
+**Publication:** [Clinical and Experimental Dermatology](https://academic.oup.com/ced/article-abstract/51/1/68/8238406?redirectedFrom=fulltext)<br>
+**Date:** 2025-12-23<br>
+**Study Type:** Meta Analysis<br>
+**Author(s):** Lin, Ho-Wei, Tam, Ka-Wai, Huang, Yu-Chen<br>
+**Abstract:** Background Acne is a common dermatological disease, characterized by the presence of comedones, papules, pustules or purulent cysts on seborrhoeic areas. Probiotics are a substrate that is selectively utilized by host microorganisms, conferring a health benefit. It has been demonstrated as an effective treatment for dermatological disorders. However, the effects of probiotics on acne remain unclear. Objectives This systematic review and meta-analysis investigated the therapeutic difference (disease severity grading and number of lesions) between oral probiotics and control (placebo) in patients with acne. Methods A literature search was conducted using PubMed, Embase and Cochrane Library for randomized trials published before February 2025, comparing probiotics with other interventions, including pharmacological treatments or placebo, in patients with acne. Results We identified a total of 632 articles initially, and 9 studies involving 623 patients were included in the systematic review. Seven studies were further included in quantitative analysis. After the 4-week intervention, slight differences were observed in the number of inflammatory or noninflammatory lesions between the probiotics and control groups. However, after the 12-week intervention, probiotics significantly alleviated disease severity grading (standard mean difference −1.38, 95% confidence interval −2.69 to −0.08); decreased the total number of lesions (mean difference −10.4, 95% CI −16.2 to −4.51), the number of inflammatory lesions and the number of noninflammatory lesions; and improved skin hydration and sebum content compared with control. Moreover, no major adverse effects of probiotics were reported. Conclusions Probiotics may exert therapeutic effects in patients with acne.<br>
+**DOI:** [10.1093/ced/llaf388](https://doi.org/10.1093/ced/llaf388)<br>
+**Source URL:** [https://academic.oup.com/ced/article-abstract/51/1/68/8238406?redirectedFrom=fulltext](https://academic.oup.com/ced/article-abstract/51/1/68/8238406?redirectedFrom=fulltext)
