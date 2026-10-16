@@ -67,6 +67,31 @@ Vitamin E Reduces inflammation.
 
 A lower concentration of several biomarkers of inflammation in the liver have been observed in mice.[^2]
 
+### Lipid Metabolism
+
+- The pooled analysis of 28 RCTs found that overall vitamin E administration in diabetic patients significantly reduced total cholesterol (TC) (WMD: −5.20 mg/dL, 95% CI: [−7.60, −2.80], p < 0.001) and low-density lipoprotein cholesterol (LDL-C) (WMD: −4.21 mg/dL, 95% CI: [−7.32, −1.09], p = 0.008).[^11]
+  <!-- provenance | claim_kind: source_finding | source_section: Results | source_quote: The pooled analysis of 28 RCTs found that overall vitamin E administration in diabetic patients significantly reduced total cholesterol (TC) (WMD: − 5.20 mg/dL, 95% CI: [− 7.60, − 2.80], *p* &lt; 0.001) and low-density lipoprotein cholesterol (LDL-C) (WMD: − 4.21 mg/dL, 95% CI: [− 7.32, − 1.09], *p* = 0.008). | cited_references: none -->
+- Subgroup analysis showed that vitamin E reduced TG with longer durations, lowered TC and LDL-C in participants with high baseline levels, higher doses, or longer interventions, and increased HDL-C only in studies lasting over 8 weeks.[^11]
+  <!-- provenance | claim_kind: source_finding | source_section: Results | source_quote: Subgroup analysis showed that vitamin E reduced TG with longer durations, lowered TC and LDL-C in participants with high baseline levels, higher doses, or longer interventions, and increased HDL-C only in studies lasting over 8 weeks. | cited_references: none -->
+- Linear regression analysis found no significant associations between vitamin E dose or duration and serum lipids.[^11]
+  <!-- provenance | claim_kind: source_finding | source_section: Results | source_quote: Linear regression analysis found no significant associations between vitamin E dose or duration and serum lipids. | cited_references: none -->
+- In contrast, non-linear dose–response analysis showed a significant inverse relationship between vitamin E dose and TC levels.[^11]
+  <!-- provenance | claim_kind: source_finding | source_section: Results | source_quote: In contrast, non-linear dose–response analysis showed a significant inverse relationship between vitamin E dose and TC levels. | cited_references: none -->
+- Nonetheless, the observed lipid-modulating effects suggest that vitamin E administration may play a role in reducing risk of CVD in diabetic populations through improved lipid management.[^11]
+  <!-- provenance | claim_kind: source_finding | source_section: Discussion | source_quote: Nonetheless, the observed lipid-modulating effects suggest that vitamin E administration may play a role in reducing risk of CVD in diabetic populations through improved lipid management. | cited_references: none -->
+
+### Antioxidant
+
+- Studies have shown that Vitamin E, as a potent antioxidant, may improve serum lipid profile by reducing oxidative stress and inflammation.[^11]
+  <!-- provenance | claim_kind: background_fact | source_section: Background | source_quote: Studies have shown that Vitamin E, as a potent antioxidant, may improve serum lipid profile by reducing oxidative stress and inflammation. | cited_references: none -->
+
+### Glycemic Control
+
+- Studies report that vitamin E levels are consistently lower in people with T2DM compared to healthy individuals, and insufficient levels are associated with greater insulin resistance.[^11]
+  <!-- provenance | claim_kind: background_fact | source_section: Discussion | source_quote: Studies report that vitamin E levels are consistently lower in people with T2DM compared to healthy individuals, and insufficient levels are associated with greater insulin resistance. | cited_references: none -->
+- Although evidence is limited, preliminary studies suggest that vitamin E may offer therapeutic benefits in T1DM.[^11]
+  <!-- provenance | claim_kind: background_fact | source_section: Discussion | source_quote: Although evidence is limited, preliminary studies suggest that vitamin E may offer therapeutic benefits in T1DM. | cited_references: none -->
+
 ## Disease / Symptom Treatment
 
 ### Colon Cancer
@@ -116,3 +141,12 @@ Vitamin E can not only work as an anti-oxidant but also as a pro-oxidant.[^2]
 [^10]: **Title:** []()<br>
 **Publication:** []()<br>
 **Archive:** [archive]()
+
+[^11]: **Title:** [Effects of vitamin E administration on serum lipid profile in diabetic patients: a grade-assessed systematic review and dose–response meta-analysis of RCTs | Diabetology & Metabolic Syndrome | Springer Nature Link](https://doi.org/10.1186/s13098-025-01833-2)<br>
+**Publication:** [Diabetology & Metabolic Syndrome](https://dmsjournal.biomedcentral.com/articles/10.1186/s13098-025-01833-2)<br>
+**Date:** 2025-12<br>
+**Study Type:** Meta Analysis<br>
+**Author(s):** Karimi, Mehdi, Karimi, Mohammad Amin, Fayedeh, Farzad, Ziyafati Kafi, Fatemeh, Kazemi, Kimia, Jahangiri, Sharareh, Asbaghi, Omid<br>
+**Abstract:** Diabetes is often associated with dyslipidemia, increasing the risk of cardiovascular complications. Studies have shown that Vitamin E, as a potent antioxidant, may improve serum lipid profile by reducing oxidative stress and inflammation. However, findings on its effects on diabetic patients remain inconsistent. To address this gap, this meta-analysis aims to evaluate the impact of vitamin E on serum lipid parameters in individuals with diabetes.<br>
+**DOI:** [10.1186/s13098-025-01833-2](https://doi.org/10.1186/s13098-025-01833-2)<br>
+**Source URL:** [https://dmsjournal.biomedcentral.com/articles/10.1186/s13098-025-01833-2](https://dmsjournal.biomedcentral.com/articles/10.1186/s13098-025-01833-2)
